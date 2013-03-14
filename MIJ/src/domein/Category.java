@@ -48,5 +48,10 @@ public class Category {
 	public void addChild(Category child) {
 		this.childs.addChild(child);
 	}
+	
+	public void addPattern(Pattern newPattern) {
+		this.addPattern(newPattern);
+		
+	}
 
 }

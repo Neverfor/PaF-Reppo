@@ -21,11 +21,9 @@ public class Repository {
 		if(parents != null){
 			for(Category category: this.categories){
 				//TODO: to get this contains() working we might need to override the equals() of Category, not tested yet
-				if(parents.contains(category)){ 
-					category.addChild(newCategory);
-				}else{
-					throw new IllegalArgumentException("Parent category not found in repository");
-				}
+				if(!parents.contains(category)) 
+					throw new IllegalArgumentException("Parent category not found in repository");				
+				category.addChild(newCategory);
 			}
 		}else{
 			this.categories.add(newCategory);
@@ -44,6 +42,7 @@ public class Repository {
 		for(Category category: categories){
 			if(category.getPatterns().contains(newPattern))
 				throw new IllegalArgumentException("Pattern was already part of " + category.getName());
+			category.addPattern(newPattern);
 		}
 	}
 }
