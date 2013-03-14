@@ -1,4 +1,4 @@
-package matcher;
+package domein;
 
 public class Pattern {
 	private String naam;

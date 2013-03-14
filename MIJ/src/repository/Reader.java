@@ -1,4 +1,4 @@
-package repo;
+package repository;
 
 public abstract class Reader {
 

@@ -1,4 +1,4 @@
-package repo;
+package repository;
 
 public class Main {
 
