@@ -33,9 +33,9 @@ public class Repository {
 	/**
 	 * Adds pattern to the list of patterns and to his categories
 	 * @param newPattern
-	 * @param categories list of catogies to put the pattern in
+	 * @param categories list of categories to put the pattern in
 	 */
-	//TODO: list of patterns might not be needed, filling it as redounded anyway
+	//TODO: list of patterns might not be needed, filling it as redundant anyway
 	public void addPattern(Pattern newPattern, ArrayList<Category> categories){	
 		if(!this.patterns.add(newPattern))
 			throw new IllegalArgumentException("Pattern was already defined in repository");

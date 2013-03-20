@@ -45,10 +45,17 @@ public class Category {
 		this.childs = childs;
 	}
 	
+	/**
+	 * @param child to add to set
+	 */
 	public void addChild(Category child) {
 		this.childs.addChild(child);
 	}
 	
+	/**
+	 * 
+	 * @param newPattern to add to category
+	 */
 	public void addPattern(Pattern newPattern) {
 		this.addPattern(newPattern);
 		
