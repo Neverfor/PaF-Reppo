@@ -2,6 +2,7 @@ package repository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 import domein.*;
 
@@ -11,6 +12,22 @@ public class Repository {
 	private HashSet<Category> categories;
 	private HashSet<Pattern> patterns;
 	private PersistenceFactory persistenceType;
+	
+	private static Repository _instance = null;
+	
+	
+	private Repository () {
+		categories.add(new Category("Creational"));
+	}
+	
+	public static Repository getInstance(){
+		if (_instance == null) createInstance ();
+        return _instance;
+	}
+	
+	private synchronized static void createInstance () {
+        if (_instance == null) _instance = new Repository ();
+    }
 	
 	/**
 	 * Adds category to Repository's list of categories.
@@ -44,5 +61,14 @@ public class Repository {
 				throw new IllegalArgumentException("Pattern was already part of " + category.getName());
 			category.addPattern(newPattern);
 		}
+	}
+	
+	/**
+	 * Returns all categories
+	 * @return Set<Category>
+	 */
+
+	public Set<Category> getCategories() {
+		return categories; 
 	}
 }

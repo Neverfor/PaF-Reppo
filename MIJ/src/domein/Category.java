@@ -8,6 +8,9 @@ public class Category {
 	private Category childs;
 	
 	
+	public Category(String categoryName) {
+		this.name = categoryName;
+	}
 	/**
 	 * @return the patterns
 	 */
@@ -59,6 +62,11 @@ public class Category {
 	public void addPattern(Pattern newPattern) {
 		this.addPattern(newPattern);
 		
+	}
+	
+	
+	public String toString(){
+		return name;
 	}
 
 }

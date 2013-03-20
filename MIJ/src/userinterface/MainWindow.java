@@ -6,12 +6,17 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 public class MainWindow {
 
 	private JFrame frame;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -53,10 +58,16 @@ public class MainWindow {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Add Pattern");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				JOptionPane.showMessageDialog(null, this, "try", 0);
+				frame.getContentPane().remove(panel);
+				panel = new AddPattern();
+				frame.getContentPane().add(panel, BorderLayout.CENTER);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
+		
+		panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
 	}
 
 }
