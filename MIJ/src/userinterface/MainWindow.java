@@ -25,22 +25,6 @@ public class MainWindow {
 	private JPanel panel;
 
 	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainWindow window = new MainWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
 	 * Create the application.
 	 */
 	public MainWindow() {
@@ -72,6 +56,17 @@ public class MainWindow {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new AddPattern();
+				frame.getContentPane().add(panel, BorderLayout.CENTER);
+				frame.getContentPane().revalidate();
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		mntmNewMenuItem = new JMenuItem("Add Category");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.getContentPane().remove(panel);
+				panel = new AddCategory();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
 				frame.getContentPane().revalidate();
 			}

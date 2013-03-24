@@ -45,7 +45,9 @@ public class Repository {
 				category.addChild(newCategory);
 			}
 		}else{
-			this.categories.add(newCategory);
+			if(!this.categories.contains(newCategory)){
+				this.categories.add(newCategory);
+			}
 		}
 	}
 	
