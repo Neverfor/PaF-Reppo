@@ -9,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -110,9 +111,37 @@ public class AddPatternPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addPattern();
+				clearAll();
 			}
 		});
-		add(btnAddPattern, "2, 13");		
+		add(btnAddPattern, "2, 13");	
+		
+		
+//		JButton btnClear = new JButton("Clear all Fields");
+//		btnAddPattern.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e2) {
+//				clearAll();
+//			}
+//		});
+//		add(btnClear, "1, 13");	
+	}
+	
+	
+	
+	
+	public void clearAll(){
+		tfPatternName.setText("");
+		tfDescription.setText("");
+		for(JTextField tf: this.contexts.values()){
+			tf.setText("");
+		}
+		for(JTextField tf: this.problems.values()){
+			tf.setText("");
+		}
+		for(JTextField tf: this.consequences.values()){
+			tf.setText("");
+		}
 		
 	}
 	
@@ -136,6 +165,8 @@ public class AddPatternPanel extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		JOptionPane.showMessageDialog(null, "Pattern added succesfully", 
+				"Pattern proceccing...",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	/**
