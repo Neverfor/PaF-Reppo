@@ -42,7 +42,7 @@ public class AddCategory extends JPanel {
 		add(tfCategoryName);
 		tfCategoryName.setColumns(10);
 		
-		JComboBox<Category> cbCategory = new JComboBox<Category>();
+		JComboBox<Object> cbCategory = new JComboBox<Object>();
 		task.fillCategoryCombobox(cbCategory);
 		cbCategory.setBounds(162, 73, 112, 24);
 		add(cbCategory);
