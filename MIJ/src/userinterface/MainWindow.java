@@ -48,8 +48,10 @@ public class MainWindow {
 		panel = new JPanel();
 		panel.setBounds(0, 0, 200, 200);
 
+		JMenu FileMenu = new JMenu("File");
 		JMenu PatternsMenu = new JMenu("Patterns");
 		JMenu CategoriesMenu = new JMenu("Categories");
+		menuBar.add(FileMenu);
 		menuBar.add(PatternsMenu);
 		menuBar.add(CategoriesMenu);
 		
@@ -86,6 +88,29 @@ public class MainWindow {
 			}
 		});
 		CategoriesMenu.add(addCategoryItem);
+		
+		JMenuItem exportRepository = new JMenuItem("Export Repository");
+		addCategoryItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Export Not Implemented yet", "try", 0);
+				/*frame.getContentPane().remove(panel);
+				panel = new AddCategory();
+				frame.getContentPane().add(panel, BorderLayout.CENTER);
+				frame.getContentPane().revalidate();*/
+			}
+		});
+		FileMenu.add(exportRepository);
+		
+		JMenuItem importRepository = new JMenuItem("Import Repository");
+		addCategoryItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				/*frame.getContentPane().remove(panel);
+				panel = new AddCategory();
+				frame.getContentPane().add(panel, BorderLayout.CENTER);
+				frame.getContentPane().revalidate();*/
+			}
+		});
+		FileMenu.add(importRepository);
 		
 	}
 
