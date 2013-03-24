@@ -116,15 +116,6 @@ public class AddPatternPanel extends JPanel {
 		});
 		add(btnAddPattern, "2, 13");	
 		
-		
-//		JButton btnClear = new JButton("Clear all Fields");
-//		btnAddPattern.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e2) {
-//				clearAll();
-//			}
-//		});
-//		add(btnClear, "1, 13");	
 	}
 	
 	
