@@ -82,7 +82,7 @@ public class MainWindow {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
-				panel = new AddCategory();
+				panel = new AddCategoryPanel();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
 				frame.getContentPane().revalidate();
 			}

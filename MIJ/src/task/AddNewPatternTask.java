@@ -68,4 +68,11 @@ public class AddNewPatternTask{
 		rp.addPattern(newPattern, categories);
 		System.out.println(rp.toString());
 	}
+	
+	
+	public void addCategory(String categoryName,ArrayList<Category> parents){
+		Repository rp = Repository.getInstance();
+		Category newCategory = new Category(categoryName);
+		rp.addCategory(newCategory, parents);
+	}
 }

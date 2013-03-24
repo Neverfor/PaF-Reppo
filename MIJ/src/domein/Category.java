@@ -13,6 +13,7 @@ public class Category {
 	public Category(String categoryName) {
 		this.name = categoryName;
 		patterns = new HashSet<Pattern>();
+		childs = new HashSet<Category>();
 		contexts = new HashSet<Context>();
 	}
 	/**

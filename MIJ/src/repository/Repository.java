@@ -38,17 +38,13 @@ public class Repository {
 	 * @param parents list with parents
 	 */
 	public void addCategory(Category newCategory, ArrayList<Category> parents){
-		if(parents != null){
-			for(Category category: this.categories){
-				//TODO: to get this contains() working we might need to override the equals() of Category, not tested yet
-				if(!parents.contains(category)) 
-					throw new IllegalArgumentException("Parent category not found in repository");				
-				category.addChild(newCategory);
+		if (parents != null) {
+			for (Category category : parents) {
+				getCategory(category.getName()).addChild(newCategory);
 			}
-		}else{
-			if(!this.categories.contains(newCategory)){
-				this.categories.add(newCategory);
-			}
+		}
+		if (!this.categories.contains(newCategory)) {
+			this.categories.add(newCategory);
 		}
 	}
 	
@@ -83,5 +79,14 @@ public class Repository {
 	 */
 	public Set<Pattern> getPatterns() {
 		return patterns; 
+	}
+	
+	public Category getCategory(String categoryName) {
+		for (Category c : categories) {
+			if (c.getName().equals(categoryName)) {
+				return c;
+			}
+		}
+		return null;
 	}
 }
