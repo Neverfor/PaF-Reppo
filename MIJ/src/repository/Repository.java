@@ -18,6 +18,7 @@ public class Repository {
 	
 	private Repository () {
 		categories = new HashSet<Category>();
+		patterns = new HashSet<Pattern>();
 	}
 	
 	public static Repository getInstance(){
