@@ -16,8 +16,8 @@ public ShowImage(){
 public void paintComponent(Graphics g){
 
  // Draw our Image object.
- g.drawImage(image,50,10,200,200, this); // at location 50,10 and 200 wide and high
- g.drawImage(image,100,20,200,200, this);
+ g.drawImage(img,50,10,200,200, this); // at location 50,10 and 200 wide and high
+ g.drawImage(img,100,20,200,200, this);
  g.drawImage(img,150,30,200,200, this);
 }
 
