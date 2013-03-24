@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import repository.Repository;
 import repository.XMLWriter;
+import task.AddNewPatternTask;
 
 import java.awt.BorderLayout;
 
@@ -37,8 +38,10 @@ public class MainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		Category c = new Category("Creational");
-		Repository.getInstance().addCategory(c, null);
+		AddNewPatternTask tk = new AddNewPatternTask();
+		tk.fillStaticRepo();
+//		Category c = new Category("Creational");
+//		Repository.getInstance().addCategory(c, null);
 		frame = new JFrame();
 		frame.setBounds(100, 100, 755, 655);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
