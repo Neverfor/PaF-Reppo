@@ -60,7 +60,9 @@ public class SelectPatternPanel extends JPanel {
 						cbContext.addActionListener(new ActionListener() {
 							@Override
 							public void actionPerformed(ActionEvent e) {
+								cbContext.removeAll();
 								task.fillContexts(cbContext, cbCategory.getSelectedItem());
+//								resultPanel.updateUI();
 								updateResultPanel();
 							}
 						});
@@ -91,6 +93,7 @@ public class SelectPatternPanel extends JPanel {
 	
 	public void updateResultPanel(){
 		resultPanel.removeAll();
+//		resultPanel.updateUI();
 		for(String pattern[]: task.getResults(cbCategory.getSelectedItem(), cbContext.getSelectedItem(), cbProblem.getSelectedItem())){
 			JButton showPattern = new JButton(pattern[0]);
 			final String patternName = pattern[0];

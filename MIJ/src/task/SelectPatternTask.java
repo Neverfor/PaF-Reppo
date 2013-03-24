@@ -9,6 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import repository.Repository;
+import userinterface.SelectPatternPanel;
 import domein.Category;
 import domein.Context;
 import domein.Pattern;
@@ -49,14 +50,17 @@ public class SelectPatternTask{
 	}
 
 	public void fillContexts(JComboBox<Object> cbContext, Object selectedCategory) {
+		cbContext.removeAllItems();
 		if(selectedCategory instanceof Category){
 			for(Context context: ((Category)selectedCategory).getContexts()){
 				cbContext.addItem(context);
 			}
+
 		}
 	}
 
 	public void fillProblems(JComboBox<Object> cbProblem, Object selectedContext) {
+		cbProblem.removeAllItems();
 		Set<Pattern> patterns = rp.getPatterns();
 		for(Pattern pattern: patterns){
 			if(pattern.getContext() == selectedContext){
