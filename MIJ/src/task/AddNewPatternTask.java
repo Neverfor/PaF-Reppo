@@ -32,7 +32,7 @@ public class AddNewPatternTask{
 		Repository.getInstance().addCategory(c, null);
 		Pattern p = new Pattern();
 		p.setNaam("test");
-		p.setContext(new Context("test context"));
+		p.addContext(new Context("test context"));
 		ArrayList<Category> cate = new ArrayList<Category>();
 		cate.add(c);
 		Repository.getInstance().addPattern(p, cate);
@@ -61,7 +61,7 @@ public class AddNewPatternTask{
 		newPattern.setProblems(patternProblems);
 		
 		newPattern.setNaam(patternName);
-		newPattern.setContext(new Context(contexts.get(0)));
+		newPattern.addContext(new Context(contexts.get(0)));
 		ArrayList<Category> categories = new ArrayList<Category>();
 		categories.add((Category)selectedCategory);
 		rp.addPattern(newPattern, categories);

@@ -6,7 +6,7 @@ import java.util.HashSet;
 public class Category {
 	private HashSet<Pattern> patterns;
 	private String name;
-	private Category childs;
+	private HashSet<Category> childs;
 	
 	
 	public Category(String categoryName) {
@@ -40,13 +40,13 @@ public class Category {
 	/**
 	 * @return the childs
 	 */
-	public Category getChilds() {
+	public HashSet<Category> getChilds() {
 		return childs;
 	}
 	/**
 	 * @param childs the childs to set
 	 */
-	public void setChilds(Category childs) {
+	public void setChilds(HashSet<Category> childs) {
 		this.childs = childs;
 	}
 	
@@ -54,7 +54,7 @@ public class Category {
 	 * @param child to add to set
 	 */
 	public void addChild(Category child) {
-		this.childs.addChild(child);
+		this.childs.add(child);
 	}
 	
 	/**

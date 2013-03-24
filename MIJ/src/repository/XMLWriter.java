@@ -44,6 +44,7 @@ public class XMLWriter extends Writer{
 		for (Pattern p : Repository.getInstance().getPatterns()){
 			Element pattern = doc.createElement("Pattern");
 			pattern.setAttribute("name", p.getNaam());
+						
 			patterns.appendChild(pattern);
 		}
  
