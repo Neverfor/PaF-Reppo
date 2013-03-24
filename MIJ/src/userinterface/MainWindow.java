@@ -52,6 +52,8 @@ public class MainWindow {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Add Pattern");
+		JMenuItem mntmNewMenuItem2 = new JMenuItem("Select Pattern");
+		
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
@@ -60,7 +62,17 @@ public class MainWindow {
 				frame.getContentPane().revalidate();
 			}
 		});
+		
+		mntmNewMenuItem2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				frame.getContentPane().remove(panel);
+				panel = new SelectPattern();
+				frame.getContentPane().add(panel, BorderLayout.CENTER);
+				frame.getContentPane().revalidate();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
+		mnNewMenu.add(mntmNewMenuItem2);
 		
 		mntmNewMenuItem = new JMenuItem("Add Category");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
