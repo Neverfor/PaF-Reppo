@@ -39,7 +39,7 @@ public class MainWindow {
 		Category c = new Category("Creational");
 		Repository.getInstance().addCategory(c, null);
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 755, 655);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JMenuBar menuBar = new JMenuBar();

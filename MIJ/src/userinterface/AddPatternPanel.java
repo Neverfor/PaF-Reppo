@@ -50,10 +50,15 @@ public class AddPatternPanel extends JPanel {
 				ColumnSpec.decode("319px"),},
 			new RowSpec[] {
 				RowSpec.decode("45dlu:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("45dlu:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("45dlu:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("45dlu:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("45dlu:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("45dlu:grow"),
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
@@ -68,34 +73,35 @@ public class AddPatternPanel extends JPanel {
 		
 		/* PATTERN DESCRIPTION */
 		JLabel lblDescription = new JLabel("Pattern description:");
-		add(lblDescription, "1, 2, fill, fill");
+		add(lblDescription, "1, 3, fill, fill");
 		tfDescription = new JTextField();
-		add(tfDescription, "2, 2, fill, default");
+		add(tfDescription, "2, 3, fill, default");
 
 		/* CATEGORIES */
+		//TODO: Allow more categories?
 		JLabel lblCategoryName = new JLabel("Category");
-		add(lblCategoryName, "1, 3, left, fill");
+		add(lblCategoryName, "1, 5, left, fill");
 		cbCategories = new JComboBox<Object>();
 		task.fillCategoryCombobox(cbCategories);
-		add(cbCategories, "2, 3, fill, default");
+		add(cbCategories, "2, 5, fill, default");
 		
 		/* CONTEXTS */
 		JLabel lblContexts = new JLabel("Context");
-		add(lblContexts, "1, 4");
+		add(lblContexts, "1, 7");
 		JPanel contextsPanel = new MultiValuePanel(contexts, this);
-		add(contextsPanel, "2, 4, fill, default");
+		add(contextsPanel, "2, 7, fill, default");
 
 		/* PROBLEMS */
 		JPanel problemsPanel = new MultiValuePanel(problems, this);
-		add(problemsPanel, "2, 5, fill, default");
+		add(problemsPanel, "2, 9, fill, default");
 		JLabel lblProblems = new JLabel("Problems");
-		add(lblProblems, "1, 5");
+		add(lblProblems, "1, 9");
 		
 		/* CONSEQUENCES */
 		JPanel consequencesPanel = new MultiValuePanel(consequences, this);
-		add(consequencesPanel, "2, 6, fill, default");
+		add(consequencesPanel, "2, 11, fill, default");
 		JLabel lblConsequences = new JLabel("Consequences");
-		add(lblConsequences, "1, 6");
+		add(lblConsequences, "1, 11");
 		
 		/* ADD BUTTON */
 		JButton btnAddPattern = new JButton("Add Pattern");
@@ -104,7 +110,7 @@ public class AddPatternPanel extends JPanel {
 				addPattern();
 			}
 		});
-		add(btnAddPattern, "2, 8");		
+		add(btnAddPattern, "2, 13");		
 		
 	}
 	
