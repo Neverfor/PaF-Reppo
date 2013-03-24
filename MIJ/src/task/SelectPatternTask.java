@@ -38,7 +38,8 @@ public class SelectPatternTask{
 				hSet = c.getPatterns();
 				Iterator iter = hSet.iterator();
 				 while(iter.hasNext()) 
-			      {
+			      {	
+//					 hSet.getClass().getName();
 			         System.out.print(iter.next());
 			         iter.remove();
 			      }
@@ -88,7 +89,17 @@ public class SelectPatternTask{
 	}
 
 	public void showPattern(String patternName) {
-		// TODO Auto-generated method stub
+		ArrayList<Pattern> pp = new ArrayList<Pattern>();
+		for (Category c : categories) {
+			pp = c.getPattern(patternName); 
+			for (Pattern p: pp){
+				p.getNaam();
+				p.getConsequences();
+				p.getDescription();
+				p.getContext();
+				System.out.println("Name" + p.getNaam() + " Description : " +  p.getDescription());
+			}
+		}
 		
 	}
 }

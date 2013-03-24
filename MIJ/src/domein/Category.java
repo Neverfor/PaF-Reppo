@@ -1,6 +1,7 @@
 
 package domein;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,6 +29,23 @@ public class Category {
 	public void setPatterns(HashSet<Pattern> patterns) {
 		this.patterns = patterns;
 	}
+	
+	/**
+	 * 
+	 * @param name of the patterns to get all patterns with the same name
+	 * @return
+	 */
+	public ArrayList<Pattern> getPattern(String name) {
+		ArrayList<Pattern> pat = new ArrayList<Pattern>();
+		for (Pattern p: patterns){
+			if(p.getNaam().equals(name)){
+				pat.add(p);
+			}
+		}return pat;
+	}
+	
+	
+	
 	/**
 	 * @return the name
 	 */

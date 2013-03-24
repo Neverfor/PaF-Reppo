@@ -31,10 +31,11 @@ public class AddNewPatternTask{
 		c = new Category("Class");
 		Repository.getInstance().addCategory(c, null);
 		Pattern p = new Pattern();
-		p.setNaam("test");
-		p.addContext(new Context("test context"));
+		p.setNaam("Factory Method");
+		p.addContext(new Context("Context for test!"));
 		ArrayList<Category> cate = new ArrayList<Category>();
 		cate.add(c);
+		
 		Repository.getInstance().addPattern(p, cate);
 	}
 
