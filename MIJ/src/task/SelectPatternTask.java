@@ -63,7 +63,7 @@ public class SelectPatternTask{
 		cbProblem.removeAllItems();
 		Set<Pattern> patterns = rp.getPatterns();
 		for(Pattern pattern: patterns){
-			if(pattern.getContext() == selectedContext){
+			if(!(pattern.getContext().isEmpty()) && pattern.getContext().get(0).equals(selectedContext)){
 				for(Problem problem: pattern.getProblems()){
 					cbProblem.addItem(problem);
 				}
@@ -78,7 +78,7 @@ public class SelectPatternTask{
 		ArrayList<String[]> rtrnList = new ArrayList<String[]>();
 		String[] p = new String[2];
 		for(Pattern pattern: patterns){
-			if(pattern.getContext() == selectedContext && pattern.getProblems().contains(selectedProblem)){
+			if(!(pattern.getContext().isEmpty()) && pattern.getContext().get(0).equals(selectedContext) && pattern.getProblems().contains(selectedProblem)){
 				p[0] =  pattern.getNaam();
 				p[1] = pattern.getDescription();
 				rtrnList.add(p);
