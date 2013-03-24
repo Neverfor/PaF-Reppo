@@ -72,8 +72,15 @@ public class Repository {
 	 * Returns all categories
 	 * @return Set<Category>
 	 */
-
 	public Set<Category> getCategories() {
 		return categories; 
+	}
+
+	/**
+	 * Returns all patterns
+	 * @return Set<Pattern>
+	 */
+	public Set<Pattern> getPatterns() {
+		return patterns; 
 	}
 }

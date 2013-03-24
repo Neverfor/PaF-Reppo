@@ -28,6 +28,14 @@ public class AddNewPatternTask{
 	public void fillStaticRepo(){
 		Category c = new Category("Creational");
 		Repository.getInstance().addCategory(c, null);
+		c = new Category("Class");
+		Repository.getInstance().addCategory(c, null);
+		Pattern p = new Pattern();
+		p.setNaam("test");
+		p.setContext(new Context("test context"));
+		ArrayList<Category> cate = new ArrayList<Category>();
+		cate.add(c);
+		Repository.getInstance().addPattern(p, cate);
 	}
 
 	public void addPattern(String patternName, String PatternDescription, Object selectedCategory,
