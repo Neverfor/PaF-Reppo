@@ -6,10 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
+
+import repository.Repository;
+
 import java.awt.BorderLayout;
 
 public class MainWindow {
@@ -22,7 +26,6 @@ public class MainWindow {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			@Override
 			public void run() {
 				try {
 					MainWindow window = new MainWindow();
@@ -58,13 +61,11 @@ public class MainWindow {
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Add Pattern");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {				
+			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new AddPatternPanel();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
 				frame.getContentPane().revalidate();
-				frame.getContentPane().repaint();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);

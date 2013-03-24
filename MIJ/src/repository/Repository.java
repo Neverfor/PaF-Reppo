@@ -17,11 +17,13 @@ public class Repository {
 	
 	
 	private Repository () {
-		categories.add(new Category("Creational"));
+		categories = new HashSet<Category>();
 	}
 	
 	public static Repository getInstance(){
-		if (_instance == null) createInstance ();
+		if (_instance == null){
+			createInstance ();
+		}
         return _instance;
 	}
 	

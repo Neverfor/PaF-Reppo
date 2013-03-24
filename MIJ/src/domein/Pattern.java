@@ -1,6 +1,6 @@
 package domein;
 
-import java.awt.List;
+
 import java.util.ArrayList;
 
 public class Pattern {
@@ -8,7 +8,7 @@ public class Pattern {
 	private Context context;
 	private Diagram diagram;
 	private ArrayList<Consequences> consequences = new ArrayList<Consequences>();
-	private ArrayList<Problem> problem = new ArrayList<Problem>();
+	private ArrayList<Problem> problems = new ArrayList<Problem>();
 	
 	public Pattern (){}
 
@@ -48,5 +48,25 @@ public class Pattern {
 
 	public void setDiagram(Diagram diagram) {
 		this.diagram = diagram;
+	}
+
+
+	public ArrayList<Consequences> getConsequences() {
+		return consequences;
+	}
+
+
+	public void setConsequences(ArrayList<Consequences> consequences) {
+		this.consequences = consequences;
+	}
+
+
+	public ArrayList<Problem> getProblems() {
+		return problems;
+	}
+
+
+	public void setProblems(ArrayList<Problem> problems) {
+		this.problems = problems;
 	}
 }
