@@ -17,7 +17,7 @@ import repository.Repository;
 
 import java.awt.BorderLayout;
 
-import domein.*;
+import domein.Category;
 
 public class MainWindow {
 
