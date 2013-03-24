@@ -77,8 +77,11 @@ public class Repository {
 		return categories; 
 	}
 
+	/**
+	 * Returns all patterns
+	 * @return Set<Pattern>
+	 */
 	public Set<Pattern> getPatterns() {
-		return patterns;
-		
+		return patterns; 
 	}
 }

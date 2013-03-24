@@ -94,7 +94,7 @@ public class MainWindow {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				XMLWriter x = new XMLWriter();
-				x.saveToXML(null, Repository.getInstance());
+				x.saveToXML(null);
 				//JOptionPane.showMessageDialog(null, "Export Not Implemented yet", "try", 0);
 				/*frame.getContentPane().remove(panel);
 				panel = new AddCategory();
