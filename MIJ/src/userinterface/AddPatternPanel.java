@@ -24,6 +24,7 @@ import java.io.InvalidObjectException;
 
 import javax.swing.BoxLayout;
 
+@SuppressWarnings("serial")
 public class AddPatternPanel extends JPanel {
 	private AddNewPatternTask task;
 	private JTextField tfPatternName;
@@ -106,6 +107,7 @@ public class AddPatternPanel extends JPanel {
 		/* ADD BUTTON */
 		JButton btnAddPattern = new JButton("Add Pattern");
 		btnAddPattern.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				addPattern();
 			}

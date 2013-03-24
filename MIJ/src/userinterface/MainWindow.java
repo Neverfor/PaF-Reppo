@@ -1,14 +1,9 @@
 package userinterface;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
-import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
@@ -18,8 +13,6 @@ import repository.XMLWriter;
 import task.AddNewPatternTask;
 
 import java.awt.BorderLayout;
-
-import domein.Category;
 
 public class MainWindow {
 
@@ -63,6 +56,7 @@ public class MainWindow {
 		JMenuItem selectPatternItem = new JMenuItem("Select Pattern");
 		
 		addPatternItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new AddPatternPanel();
@@ -72,9 +66,10 @@ public class MainWindow {
 		});
 		
 		selectPatternItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
-				panel = new SelectPattern();
+				panel = new SelectPatternPanel();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
 				frame.getContentPane().revalidate();
 			}
@@ -84,6 +79,7 @@ public class MainWindow {
 		
 		JMenuItem addCategoryItem = new JMenuItem("Add Category");
 		addCategoryItem.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new AddCategory();
@@ -95,6 +91,7 @@ public class MainWindow {
 		
 		JMenuItem exportRepository = new JMenuItem("Export Repository");
 		exportRepository.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				XMLWriter x = new XMLWriter();
 				x.saveToXML(null);
@@ -109,6 +106,7 @@ public class MainWindow {
 		
 		JMenuItem importRepository = new JMenuItem("Import Repository");
 		importRepository.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				/*frame.getContentPane().remove(panel);
 				panel = new AddCategory();

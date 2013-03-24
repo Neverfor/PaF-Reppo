@@ -8,4 +8,8 @@ public class Context {
 
 	private String context;
 
+	
+	public String toString(){
+		return context;
+	}
 }

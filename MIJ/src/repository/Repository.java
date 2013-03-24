@@ -72,6 +72,7 @@ public class Repository {
 	 * Returns all categories
 	 * @return Set<Category>
 	 */
+
 	public Set<Category> getCategories() {
 		return categories; 
 	}

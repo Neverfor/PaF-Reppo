@@ -2,16 +2,18 @@
 package domein;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Category {
 	private HashSet<Pattern> patterns;
 	private String name;
 	private HashSet<Category> childs;
-	
+	private Set<Context> contexts;
 	
 	public Category(String categoryName) {
 		this.name = categoryName;
 		patterns = new HashSet<Pattern>();
+		contexts = new HashSet<Context>();
 	}
 	/**
 	 * @return the patterns
@@ -67,8 +69,20 @@ public class Category {
 	}
 	
 	
+	@Override
 	public String toString(){
 		return name;
+	}
+	
+	public Set<Context> getContexts() {
+		return contexts;
+	}
+	public void setContexts(Set<Context> contexts) {
+		this.contexts = contexts;
+	}
+	public void addContext(Context context) {
+		this.contexts.add(context);
+		
 	}
 
 }

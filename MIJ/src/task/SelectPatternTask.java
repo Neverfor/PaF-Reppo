@@ -1,33 +1,31 @@
 package task;
 
-import java.io.InvalidObjectException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
-
-
 import repository.Repository;
 import domein.Category;
-import domein.Consequences;
 import domein.Context;
 import domein.Pattern;
 import domein.Problem;
 
-public class SelectPatternTask extends JFrame{
+public class SelectPatternTask{
 	
 	private ArrayList<Category> categories = new ArrayList<Category>();
 	private ArrayList<Pattern> selectedPatterns = new ArrayList<Pattern>();
+	private Repository rp = Repository.getInstance();
 	
-	public void fillCategoryCombobox(JComboBox<Category> cb){
-		Repository rp = Repository.getInstance();
+	public void fillCategoryCombobox(JComboBox<Object> cbCategory){
+		
 		Set<Category> categories = rp.getCategories();
 		
 		for (Category category: categories){
-			cb.addItem(category);
+			cbCategory.addItem(category);
 		}
 		
 	}
@@ -48,5 +46,45 @@ public class SelectPatternTask extends JFrame{
 			}
 		
 	
+	}
+
+	public void fillContexts(JComboBox<Object> cbContext, Object selectedCategory) {
+		if(selectedCategory instanceof Category){
+			for(Context context: ((Category)selectedCategory).getContexts()){
+				cbContext.addItem(context);
+			}
+		}
+	}
+
+	public void fillProblems(JComboBox<Object> cbProblem, Object selectedContext) {
+		Set<Pattern> patterns = rp.getPatterns();
+		for(Pattern pattern: patterns){
+			if(pattern.getContext() == selectedContext){
+				for(Problem problem: pattern.getProblems()){
+					cbProblem.addItem(problem);
+				}
+			}
+		}
+		
+	}
+
+	public ArrayList<String[]> getResults(Object selectedItem, Object selectedContext,
+			Object selectedProblem) {
+		Set<Pattern> patterns = rp.getPatterns();
+		ArrayList<String[]> rtrnList = new ArrayList<String[]>();
+		String[] p = new String[2];
+		for(Pattern pattern: patterns){
+			if(pattern.getContext() == selectedContext && pattern.getProblems().contains(selectedProblem)){
+				p[0] =  pattern.getNaam();
+				p[1] = pattern.getDescription();
+				rtrnList.add(p);
+			}
+		}
+		return rtrnList;
+	}
+
+	public void showPattern(String patternName) {
+		// TODO Auto-generated method stub
+		
 	}
 }

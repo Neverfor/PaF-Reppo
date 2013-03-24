@@ -73,4 +73,11 @@ public class Pattern {
 	public void setProblems(ArrayList<Problem> problems) {
 		this.problems = problems;
 	}
+
+
+	public String getDescription() {
+		//TODO: dit
+		return "";
+		
+	}
 }
