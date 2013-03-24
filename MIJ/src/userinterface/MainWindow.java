@@ -59,7 +59,7 @@ public class MainWindow {
 		addPatternItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
-				panel = new AddPattern();
+				panel = new AddPatternPanel();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
 				frame.getContentPane().revalidate();
 			}
