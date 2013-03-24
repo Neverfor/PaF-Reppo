@@ -9,10 +9,12 @@ import javax.xml.transform.stream.*;
  
 import org.w3c.dom.*;
 
+import domein.Category;
+
  
 public class XMLWriter extends Writer{
  
-	public  void saveToXML(String xml) {
+	public  void saveToXML(String xml,Repository rp) {
  
 	  try {
  
@@ -23,39 +25,17 @@ public class XMLWriter extends Writer{
 		Document doc = docBuilder.newDocument();
 		
 //		Eerste root
-		Element rootElement = doc.createElement("Category");
+		Element rootElement = doc.createElement("Repository");
 		doc.appendChild(rootElement);
- 
-//		 Tweede root
-		Element pattern = doc.createElement("Patterns");
-		rootElement.appendChild(pattern);
- 
-//		 set attribute voor Pattern
-		Attr attr = doc.createAttribute("Naam");
-		attr.setValue("Creational");
-		pattern.setAttributeNode(attr);
- 
-//		  of ->>>>   pattern.setAttribute("id", "1");
- 
-//		 Pattern naam elementen
-		Element name = doc.createElement("firstname");
-		name.appendChild(doc.createTextNode("yong"));
-		pattern.appendChild(name);
- 
-//		 Pattern problem elementen
-		Element problem = doc.createElement("lastname");
-		problem.appendChild(doc.createTextNode("mook kim"));
-		pattern.appendChild(problem);
- 
-//		 Pattern consequences elementen
-		Element consequence = doc.createElement("nickname");
-		consequence.appendChild(doc.createTextNode("mkyong"));
-		pattern.appendChild(consequence);
- 
-//		 Pattern diagram elementen
-		Element diagram = doc.createElement("drawing");
-		diagram.appendChild(doc.createTextNode("AB02lD239SDJAK923#9982"));
-		pattern.appendChild(diagram);
+		
+		Element categories = doc.createElement("Categories");
+		rootElement.appendChild(categories);
+		
+		for (Category c : Repository.getInstance().getCategories()){
+			Element category = doc.createElement("Category");
+			category.setAttribute("name", c.getName());
+			categories.appendChild(category);
+		}
  
 //		 schrijven naar xml
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();

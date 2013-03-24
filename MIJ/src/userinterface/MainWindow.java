@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
 import repository.Repository;
+import repository.XMLWriter;
 
 import java.awt.BorderLayout;
 
@@ -90,9 +91,11 @@ public class MainWindow {
 		CategoriesMenu.add(addCategoryItem);
 		
 		JMenuItem exportRepository = new JMenuItem("Export Repository");
-		addCategoryItem.addActionListener(new ActionListener() {
+		exportRepository.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "Export Not Implemented yet", "try", 0);
+				XMLWriter x = new XMLWriter();
+				x.saveToXML(null, Repository.getInstance());
+				//JOptionPane.showMessageDialog(null, "Export Not Implemented yet", "try", 0);
 				/*frame.getContentPane().remove(panel);
 				panel = new AddCategory();
 				frame.getContentPane().add(panel, BorderLayout.CENTER);
@@ -102,7 +105,7 @@ public class MainWindow {
 		FileMenu.add(exportRepository);
 		
 		JMenuItem importRepository = new JMenuItem("Import Repository");
-		addCategoryItem.addActionListener(new ActionListener() {
+		importRepository.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				/*frame.getContentPane().remove(panel);
 				panel = new AddCategory();
