@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Pattern {
 	private String naam;
-	private ArrayList<Context> context;
+	private ArrayList<Context> context = new ArrayList<Context>();
 	private Diagram diagram;
 	private ArrayList<Consequences> consequences = new ArrayList<Consequences>();
 	private ArrayList<Problem> problems = new ArrayList<Problem>();
@@ -15,7 +15,6 @@ public class Pattern {
 	
 	public Pattern(String naam, Diagram diagram) {
 		this.naam = naam;
-		this.context = context;
 		this.diagram = diagram;
 
 	}
