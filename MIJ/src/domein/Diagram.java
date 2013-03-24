@@ -17,6 +17,7 @@ public class Diagram extends JPanel {
 
 	}
 	
+	@Override
 	public void paintComponent(Graphics g){
 		 g.drawImage(img,50,10,200,200, this); // locatie 50, 10 en breedte + hoogte 200 x 200
 		}

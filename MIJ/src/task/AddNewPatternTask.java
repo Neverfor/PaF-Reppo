@@ -54,6 +54,7 @@ public class AddNewPatternTask{
 		
 		newPattern.setNaam(patternName);
 		newPattern.setContext(new Context(contexts.get(0)));
+		((Category)selectedCategory).addContext(newPattern.getContext());
 		ArrayList<Category> categories = new ArrayList<Category>();
 		categories.add((Category)selectedCategory);
 		rp.addPattern(newPattern, categories);

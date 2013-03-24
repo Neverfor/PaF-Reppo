@@ -1,17 +1,9 @@
 package userinterface;
 
 import javax.swing.JPanel;
-import java.awt.FlowLayout;
-import java.awt.Panel;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.GridLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
-import java.awt.BorderLayout;
 import javax.swing.JButton;
 
 import repository.Repository;
@@ -22,6 +14,7 @@ import domein.Category;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class AddCategory extends JPanel {
 	private JTextField tfCategoryName;
 	private AddNewPatternTask task;

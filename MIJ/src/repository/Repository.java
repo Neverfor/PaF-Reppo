@@ -76,4 +76,9 @@ public class Repository {
 	public Set<Category> getCategories() {
 		return categories; 
 	}
+
+	public Set<Pattern> getPatterns() {
+		return patterns;
+		
+	}
 }
