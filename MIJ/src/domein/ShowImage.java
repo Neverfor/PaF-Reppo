@@ -4,21 +4,16 @@ import java.awt.*;
 import javax.swing.*;
 
 public class ShowImage extends JPanel{
-Image image; // Declare a name for our Image object.
 Image img;
 
 public ShowImage(){
  super();
- image = Toolkit.getDefaultToolkit().getImage("java_duke.gif");
  img = Toolkit.getDefaultToolkit().getImage("java_duke.png");
 }
 
 public void paintComponent(Graphics g){
-
- // Draw our Image object.
- g.drawImage(img,50,10,200,200, this); // at location 50,10 and 200 wide and high
- g.drawImage(img,100,20,200,200, this);
- g.drawImage(img,150,30,200,200, this);
+ // Teken image
+ g.drawImage(img,50,10,200,200, this); // locatie 50, 10 en breedte + hoogte 200 x 200
 }
 
 public static void main(String arg[]){
