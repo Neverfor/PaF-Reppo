@@ -47,14 +47,16 @@ public class MainWindow {
 		
 		panel = new JPanel();
 		panel.setBounds(0, 0, 200, 200);
+
+		JMenu PatternsMenu = new JMenu("Patterns");
+		JMenu CategoriesMenu = new JMenu("Categories");
+		menuBar.add(PatternsMenu);
+		menuBar.add(CategoriesMenu);
 		
-		JMenu mnNewMenu = new JMenu("Patterns");
-		menuBar.add(mnNewMenu);
+		JMenuItem addPatternItem = new JMenuItem("Add Pattern");
+		JMenuItem selectPatternItem = new JMenuItem("Select Pattern");
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Add Pattern");
-		JMenuItem mntmNewMenuItem2 = new JMenuItem("Select Pattern");
-		
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		addPatternItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new AddPattern();
@@ -63,7 +65,7 @@ public class MainWindow {
 			}
 		});
 		
-		mntmNewMenuItem2.addActionListener(new ActionListener() {
+		selectPatternItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new SelectPattern();
@@ -71,11 +73,11 @@ public class MainWindow {
 				frame.getContentPane().revalidate();
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem);
-		mnNewMenu.add(mntmNewMenuItem2);
+		PatternsMenu.add(addPatternItem);
+		PatternsMenu.add(selectPatternItem);
 		
-		mntmNewMenuItem = new JMenuItem("Add Category");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
+		JMenuItem addCategoryItem = new JMenuItem("Add Category");
+		addCategoryItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				frame.getContentPane().remove(panel);
 				panel = new AddCategory();
@@ -83,7 +85,7 @@ public class MainWindow {
 				frame.getContentPane().revalidate();
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem);
+		CategoriesMenu.add(addCategoryItem);
 		
 	}
 
