@@ -9,8 +9,8 @@ import domein.*;
 public class Repository {
 
 
-	private HashSet<Category> categories;
-	private HashSet<Pattern> patterns;
+	private HashSet<Category> categories = new HashSet<Category>();
+	private HashSet<Pattern> patterns = new HashSet<Pattern>();
 	private PersistenceFactory persistenceType;
 	
 	private static Repository _instance = null;
