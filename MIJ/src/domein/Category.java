@@ -11,6 +11,7 @@ public class Category {
 	
 	public Category(String categoryName) {
 		this.name = categoryName;
+		patterns = new HashSet<Pattern>();
 	}
 	/**
 	 * @return the patterns
@@ -61,7 +62,7 @@ public class Category {
 	 * @param newPattern to add to category
 	 */
 	public void addPattern(Pattern newPattern) {
-		this.addPattern(newPattern);
+		this.patterns.add(newPattern);
 		
 	}
 	
