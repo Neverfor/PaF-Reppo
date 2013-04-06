@@ -34,6 +34,8 @@ public class AddPatternPanel extends JPanel {
 	private HashMap<JButton, JTextField> contexts;
 	private HashMap<JButton, JTextField> problems;
 	private HashMap<JButton, JTextField> consequences;
+	
+	private JPanel consequencesPanel;
 
 	/**
 	 * Create the panel.
@@ -100,7 +102,7 @@ public class AddPatternPanel extends JPanel {
 		add(lblProblems, "1, 9");
 		
 		/* CONSEQUENCES */
-		JPanel consequencesPanel = new MultiValuePanel(consequences, this);
+		consequencesPanel = new MultiValuePanel(consequences, this);
 		add(consequencesPanel, "2, 11, fill, default");
 		JLabel lblConsequences = new JLabel("Consequences");
 		add(lblConsequences, "1, 11");
@@ -124,16 +126,16 @@ public class AddPatternPanel extends JPanel {
 	public void clearAll(){
 		tfPatternName.setText("");
 		tfDescription.setText("");
-		for(JTextField tf: this.contexts.values()){
-			tf.setText("");
-		}
+		consequencesPanel.removeAll();
+		consequencesPanel = new MultiValuePanel(consequences, this);
+		add(consequencesPanel, "2, 11, fill, default");
 		for(JTextField tf: this.problems.values()){
 			tf.setText("");
 		}
-		for(JTextField tf: this.consequences.values()){
+		for(JTextField tf: this.contexts.values()){
 			tf.setText("");
 		}
-		
+		this.revalidate();
 	}
 	
 	public void addPattern(){
@@ -152,12 +154,12 @@ public class AddPatternPanel extends JPanel {
 		}
 		try {
 			task.addPattern(tfPatternName.getText(), tfDescription.getText(), cbCategories.getSelectedItem(), contexts, problems, consequences);
+			JOptionPane.showMessageDialog(null, "Pattern added succesfully", 
+					"Pattern proceccing...",JOptionPane.INFORMATION_MESSAGE);
 		} catch (InvalidObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JOptionPane.showMessageDialog(null, "Pattern added succesfully", 
-				"Pattern proceccing...",JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	/**

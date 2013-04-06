@@ -30,9 +30,15 @@ public class AddNewPatternTask{
 		Repository.getInstance().addCategory(c, null);
 		c = new Category("Class");
 		Repository.getInstance().addCategory(c, null);
+		Category c3 = new Category("child of class");
+		Repository.getInstance().addCategory(c3, null);
+		c.addChild(c3);
 		Pattern p = new Pattern();
 		p.setNaam("Factory Method");
 		p.addContext(new Context("Context for test!"));
+		p.addContext(new Context("Context2 for test!"));
+		p.addProblem(new Problem("Problem test"));
+		p.addConsequence(new Consequences("Consequence","jwh"));
 		ArrayList<Category> cate = new ArrayList<Category>();
 		cate.add(c);
 		
@@ -71,7 +77,7 @@ public class AddNewPatternTask{
 	}
 	
 	
-	public void addCategory(String categoryName,ArrayList<Category> parents){
+	public void addCategory(String categoryName,ArrayList<Category> parents) throws InvalidObjectException {
 		Repository rp = Repository.getInstance();
 		Category newCategory = new Category(categoryName);
 		rp.addCategory(newCategory, parents);

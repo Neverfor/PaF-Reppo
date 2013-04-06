@@ -6,6 +6,7 @@ import java.awt.Panel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
@@ -80,11 +81,14 @@ public class AddCategoryPanel extends JPanel {
 		btnAddPattern.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				addCategory();
+				clearAll();
 			}
 		});
 		add(btnAddPattern, "2, 5");
 
 	}
+	
+	public void clearAll(){}
 
 	public void addCategory() {
 		// get data from mappings
@@ -96,7 +100,14 @@ public class AddCategoryPanel extends JPanel {
 				categories.add(c);
 			}
 		}
-		task.addCategory(tfCategoryName.getText(), categories);
+		try {
+			task.addCategory(tfCategoryName.getText(), categories);
+			JOptionPane.showMessageDialog(null, "Category added succesfully", 
+					"Category proceccing...",JOptionPane.INFORMATION_MESSAGE);
+		} catch (InvalidObjectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	class MultiValuePanel extends JPanel {

@@ -45,6 +45,16 @@ public class Pattern {
 	}
 
 
+	public void addProblem(Problem problem) {
+		this.problems.add(problem);
+	}
+
+
+	public void addConsequence(Consequences consequences) {
+		this.consequences.add(consequences);
+	}
+
+
 	public Diagram getDiagram() {
 		return diagram;
 	}

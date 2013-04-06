@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
-import repository.Repository;
 import repository.XMLWriter;
 import task.AddNewPatternTask;
 
@@ -94,12 +93,7 @@ public class MainWindow {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				XMLWriter x = new XMLWriter();
-				x.saveToXML(null);
-				//JOptionPane.showMessageDialog(null, "Export Not Implemented yet", "try", 0);
-				/*frame.getContentPane().remove(panel);
-				panel = new AddCategory();
-				frame.getContentPane().add(panel, BorderLayout.CENTER);
-				frame.getContentPane().revalidate();*/
+				x.save("c:\\file.xml");
 			}
 		});
 		FileMenu.add(exportRepository);
@@ -108,10 +102,6 @@ public class MainWindow {
 		importRepository.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				/*frame.getContentPane().remove(panel);
-				panel = new AddCategory();
-				frame.getContentPane().add(panel, BorderLayout.CENTER);
-				frame.getContentPane().revalidate();*/
 			}
 		});
 		FileMenu.add(importRepository);

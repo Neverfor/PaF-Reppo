@@ -10,22 +10,23 @@ import javax.xml.transform.stream.*;
 import org.w3c.dom.*;
 
 import domein.Category;
+import domein.Consequences;
+import domein.Context;
 import domein.Pattern;
+import domein.Problem;
 
  
 public class XMLWriter extends Writer{
  
-	public  void saveToXML(String xml) {
+	public  void save(String filename) {
  
 	  try {
  
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
  
-//		 Document info
 		Document doc = docBuilder.newDocument();
 		
-//		Eerste root
 		Element rootElement = doc.createElement("Repository");
 		doc.appendChild(rootElement);
 		
@@ -36,6 +37,22 @@ public class XMLWriter extends Writer{
 			Element category = doc.createElement("Category");
 			category.setAttribute("name", c.getName());
 			categories.appendChild(category);
+
+			Element patterns = doc.createElement("Patterns");
+			category.appendChild(patterns);
+			for(Pattern p : c.getPatterns()){
+				Element pattern = doc.createElement("Pattern");
+				pattern.setAttribute("name", p.getNaam());
+				patterns.appendChild(pattern);
+			}
+
+			Element Childs = doc.createElement("Categories");
+			category.appendChild(Childs);
+			for(Category chi : c.getChilds()){
+				Element child = doc.createElement("Category");
+				child.setAttribute("name", chi.getName());
+				Childs.appendChild(child);
+			}
 		}
 		
 		Element patterns = doc.createElement("Patterns");
@@ -44,22 +61,39 @@ public class XMLWriter extends Writer{
 		for (Pattern p : Repository.getInstance().getPatterns()){
 			Element pattern = doc.createElement("Pattern");
 			pattern.setAttribute("name", p.getNaam());
-						
 			patterns.appendChild(pattern);
+			
+			Element contexts = doc.createElement("Contexts");
+			pattern.appendChild(contexts);
+			for(Context c : p.getContext()){
+				Element context = doc.createElement("Context");
+				context.setTextContent(c.toString());
+				contexts.appendChild(context);
+			}
+			
+			Element problems = doc.createElement("Problems");
+			pattern.appendChild(problems);
+			for(Problem prob : p.getProblems()){
+				Element problem = doc.createElement("Problem");
+				problem.setTextContent(prob.toString());
+				problems.appendChild(problem);
+			}
+			
+			Element consequences = doc.createElement("Consequences");
+			pattern.appendChild(consequences);
+			for(Consequences c : p.getConsequences()){
+				Element consequence = doc.createElement("Consequence");
+				consequence.setAttribute("ConsequenceType", c.getConsequenceType());
+				consequence.setTextContent(c.getConsequence());
+				consequences.appendChild(consequence);
+			}
 		}
- 
-//		 schrijven naar xml
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		Transformer transformer = transformerFactory.newTransformer();
 		DOMSource source = new DOMSource(doc);
-		StreamResult result = new StreamResult(new File("C:\\file.xml"));
- 
-//		 Output to console for testing
-//		 StreamResult result = new StreamResult(System.out);
+		StreamResult result = new StreamResult(new File(filename));
  
 		transformer.transform(source, result);
- 
-//		System.out.println("File saved!");
  
 	  } catch (ParserConfigurationException pce) {
 		pce.printStackTrace();
