@@ -18,7 +18,8 @@ import domein.Problem;
  
 public class XMLWriter extends Writer{
  
-	public  void save(String filename) {
+	@Override
+	public void save(String filename) {
  
 	  try {
  

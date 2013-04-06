@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 
+import repository.PersistenceFactory;
+import repository.Reader;
+import repository.Writer;
+import repository.XMLFactory;
 import repository.XMLWriter;
 import task.AddNewPatternTask;
 
@@ -31,9 +35,7 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		AddNewPatternTask tk = new AddNewPatternTask();
-		tk.fillStaticRepo();
-//		Category c = new Category("Creational");
-//		Repository.getInstance().addCategory(c, null);
+		//tk.fillStaticRepo();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 755, 655);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,8 +94,9 @@ public class MainWindow {
 		exportRepository.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				XMLWriter x = new XMLWriter();
-				x.save("c:\\file.xml");
+				PersistenceFactory pf = new XMLFactory();
+				Writer w = pf.createWriter();
+				w.save("c:\\file.xml");
 			}
 		});
 		FileMenu.add(exportRepository);
@@ -102,6 +105,9 @@ public class MainWindow {
 		importRepository.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				PersistenceFactory pf = new XMLFactory();
+				Reader r = pf.createReader();
+				r.open("c:\\file.xml");
 			}
 		});
 		FileMenu.add(importRepository);
