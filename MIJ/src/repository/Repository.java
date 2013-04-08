@@ -11,7 +11,7 @@ public class Repository {
 
 	private HashSet<Category> categories = new HashSet<Category>();
 	private HashSet<Pattern> patterns = new HashSet<Pattern>();
-	private PersistenceFactory persistenceType;
+	private Config config = new Config();
 	
 	private static Repository _instance = null;
 	
@@ -89,4 +89,32 @@ public class Repository {
 		}
 		return null;
 	}
+	
+	public PersistenceFactory getPersistanceFactory(){
+		Class<?> c = null;
+		try {
+			c = Class.forName("repository." + config.getPersistanceType() + "Factory");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			return (PersistenceFactory) c.newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Config getConfig() {
+		return config;
+	}
+
+
 }
+
+

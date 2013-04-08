@@ -1,21 +1,20 @@
 package userinterface;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JMenu;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import repository.PersistenceFactory;
-import repository.Reader;
-import repository.Writer;
-import repository.XMLFactory;
-import repository.XMLWriter;
 import task.AddNewPatternTask;
-
-import java.awt.BorderLayout;
+import task.PersistanceTasks;
 
 public class MainWindow {
 
@@ -29,7 +28,7 @@ public class MainWindow {
 		initialize();
 		frame.setVisible(true);
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -46,12 +45,14 @@ public class MainWindow {
 		panel = new JPanel();
 		panel.setBounds(0, 0, 200, 200);
 
-		JMenu FileMenu = new JMenu("File");
-		JMenu PatternsMenu = new JMenu("Patterns");
-		JMenu CategoriesMenu = new JMenu("Categories");
-		menuBar.add(FileMenu);
-		menuBar.add(PatternsMenu);
-		menuBar.add(CategoriesMenu);
+		JMenu fileMenu = new JMenu("File");
+		JMenu patternsMenu = new JMenu("Patterns");
+		JMenu categoriesMenu = new JMenu("Categories");
+		JMenu configMenu = new JMenu("Config");
+		menuBar.add(fileMenu);
+		menuBar.add(patternsMenu);
+		menuBar.add(categoriesMenu);
+		menuBar.add(configMenu);
 		
 		JMenuItem addPatternItem = new JMenuItem("Add Pattern");
 		JMenuItem selectPatternItem = new JMenuItem("Select Pattern");
@@ -75,8 +76,8 @@ public class MainWindow {
 				frame.getContentPane().revalidate();
 			}
 		});
-		PatternsMenu.add(addPatternItem);
-		PatternsMenu.add(selectPatternItem);
+		patternsMenu.add(addPatternItem);
+		patternsMenu.add(selectPatternItem);
 		
 		JMenuItem addCategoryItem = new JMenuItem("Add Category");
 		addCategoryItem.addActionListener(new ActionListener() {
@@ -88,29 +89,59 @@ public class MainWindow {
 				frame.getContentPane().revalidate();
 			}
 		});
-		CategoriesMenu.add(addCategoryItem);
+		categoriesMenu.add(addCategoryItem);
 		
 		JMenuItem exportRepository = new JMenuItem("Export Repository");
 		exportRepository.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				PersistenceFactory pf = new XMLFactory();
-				Writer w = pf.createWriter();
-				w.save("c:\\file.xml");
+				PersistanceTasks persTasks = new PersistanceTasks();
+				String location = null;
+				JFileChooser fc = new JFileChooser(persTasks.getDefaultOutputLocation());
+		        int returnVal = fc.showSaveDialog(MainWindow.this.panel);
+
+		        if (returnVal == JFileChooser.APPROVE_OPTION) {
+		            location = fc.getSelectedFile().getAbsolutePath();		      
+					if(persTasks.doExport(location))
+						JOptionPane.showMessageDialog(frame, "Export to: " + location + " success");
+					else
+						JOptionPane.showMessageDialog(frame, "Export failed, couldn't output to: "  + location, "Export failed",  JOptionPane.ERROR_MESSAGE);
+		        }
 			}
 		});
-		FileMenu.add(exportRepository);
+		fileMenu.add(exportRepository);
 		
 		JMenuItem importRepository = new JMenuItem("Import Repository");
 		importRepository.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				PersistenceFactory pf = new XMLFactory();
-				Reader r = pf.createReader();
-				r.open("c:\\file.xml");
+				PersistanceTasks persTasks = new PersistanceTasks();
+				String location = null;
+				JFileChooser fc = new JFileChooser(persTasks.getDefaultOutputLocation());
+		        int returnVal = fc.showOpenDialog(MainWindow.this.panel);
+
+		        if (returnVal == JFileChooser.APPROVE_OPTION) {
+		            location = fc.getSelectedFile().getAbsolutePath();		      
+					if(persTasks.doImport(location))
+						JOptionPane.showMessageDialog(frame, "Import from: " + location + " success");
+					else
+						JOptionPane.showMessageDialog(frame, "Import failed, couldn't import from: "  + location, "Import failed",  JOptionPane.ERROR_MESSAGE);
+		        }
 			}
 		});
-		FileMenu.add(importRepository);
+		fileMenu.add(importRepository);
+		
+		JMenuItem editConfig = new JMenuItem("Edit config");
+		editConfig.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				frame.getContentPane().remove(panel);
+				panel = new ConfigPanel();
+				frame.getContentPane().add(panel, BorderLayout.CENTER);
+				frame.getContentPane().revalidate();
+			}
+		});
+		configMenu.add(editConfig);
 		
 	}
 
