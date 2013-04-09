@@ -11,6 +11,8 @@ public class Category {
 	private HashSet<Category> childs;
 	private Set<Context> contexts;
 	
+	public Category(){}
+	
 	public Category(String categoryName) {
 		this.name = categoryName;
 		patterns = new HashSet<Pattern>();

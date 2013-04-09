@@ -83,8 +83,7 @@ public class XMLWriter extends Writer {
 				pattern.appendChild(consequences);
 				for (Consequences c : p.getConsequences()) {
 					Element consequence = doc.createElement("Consequence");
-					consequence.setAttribute("ConsequenceType",
-							c.getConsequenceType());
+					consequence.setAttribute("ConsequenceType", c.getConsequenceType());
 					consequence.setTextContent(c.getConsequence());
 					consequences.appendChild(consequence);
 				}
