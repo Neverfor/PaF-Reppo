@@ -45,10 +45,10 @@ public class AddNewPatternTask{
 		Repository.getInstance().addPattern(p, cate);
 		p = new Pattern();
 		p.setNaam("Singleton");
-		p.addContext(new Context("S1"));
-		p.addContext(new Context("S2"));
+		p.addContext(new Context("Create a single object"));
+		p.addContext(new Context("Object persists until application persists"));
 		p.addProblem(new Problem("single Problem test"));
-		p.addConsequence(new Consequences("Consequence","jwhasdf"));
+		p.addConsequence(new Consequences("Consequence","Singleton is B.A.D."));
 		cate = new ArrayList<Category>();
 		cate.add(c3);
 		
