@@ -126,18 +126,15 @@ public class AddPatternPanel extends JPanel {
 	public void clearAll(){
 		tfPatternName.setText("");
 		tfDescription.setText("");
-		consequences.clear();
-		problems.clear();
-		contexts.clear();
-		consequencesPanel.removeAll();
-		consequencesPanel = new MultiValuePanel(consequences, this);
-		add(consequencesPanel, "2, 11, fill, default");
-		problemsPanel.removeAll();
-		problemsPanel = new MultiValuePanel(consequences, this);
-		add(problemsPanel, "2, 9, fill, default");
-		contextsPanel.removeAll();
-		contextsPanel = new MultiValuePanel(consequences, this);
-		add(contextsPanel, "2, 7, fill, default");
+		for(JTextField tf: this.consequences.values()){
+			tf.setText("");
+		}
+		for(JTextField tf: this.problems.values()){
+			tf.setText("");
+		}
+		for(JTextField tf: this.contexts.values()){
+			tf.setText("");
+		}
 		this.revalidate();
 	}
 	
