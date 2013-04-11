@@ -34,7 +34,7 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		AddNewPatternTask tk = new AddNewPatternTask();
-		//tk.fillStaticRepo();
+		tk.fillStaticRepo();
 		frame = new JFrame();
 		frame.setBounds(100, 100, 755, 655);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
