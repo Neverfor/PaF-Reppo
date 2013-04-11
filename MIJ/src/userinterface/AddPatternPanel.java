@@ -135,6 +135,17 @@ public class AddPatternPanel extends JPanel {
 		for(JTextField tf: this.contexts.values()){
 			tf.setText("");
 		}
+		/*//Werkt niet goed met de export
+		consequencesPanel.removeAll();
+		consequencesPanel = new MultiValuePanel(consequences, this);
+		add(consequencesPanel, "2, 11, fill, default");
+		problemsPanel.removeAll();
+		problemsPanel = new MultiValuePanel(consequences, this);
+		add(problemsPanel, "2, 9, fill, default");
+		contextsPanel.removeAll();
+		contextsPanel = new MultiValuePanel(consequences, this);
+		add(contextsPanel, "2, 7, fill, default");
+		*/
 		this.revalidate();
 	}
 	
