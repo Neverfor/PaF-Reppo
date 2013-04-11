@@ -35,7 +35,7 @@ public class AddPatternPanel extends JPanel {
 	private HashMap<JButton, JTextField> problems;
 	private HashMap<JButton, JTextField> consequences;
 	
-	private JPanel consequencesPanel;
+	private JPanel consequencesPanel,problemsPanel,contextsPanel;
 
 	/**
 	 * Create the panel.
@@ -92,11 +92,11 @@ public class AddPatternPanel extends JPanel {
 		/* CONTEXTS */
 		JLabel lblContexts = new JLabel("Context");
 		add(lblContexts, "1, 7");
-		JPanel contextsPanel = new MultiValuePanel(contexts, this);
+		contextsPanel = new MultiValuePanel(contexts, this);
 		add(contextsPanel, "2, 7, fill, default");
 
 		/* PROBLEMS */
-		JPanel problemsPanel = new MultiValuePanel(problems, this);
+		problemsPanel = new MultiValuePanel(problems, this);
 		add(problemsPanel, "2, 9, fill, default");
 		JLabel lblProblems = new JLabel("Problems");
 		add(lblProblems, "1, 9");
@@ -126,15 +126,18 @@ public class AddPatternPanel extends JPanel {
 	public void clearAll(){
 		tfPatternName.setText("");
 		tfDescription.setText("");
+		consequences.clear();
+		problems.clear();
+		contexts.clear();
 		consequencesPanel.removeAll();
 		consequencesPanel = new MultiValuePanel(consequences, this);
 		add(consequencesPanel, "2, 11, fill, default");
-		for(JTextField tf: this.problems.values()){
-			tf.setText("");
-		}
-		for(JTextField tf: this.contexts.values()){
-			tf.setText("");
-		}
+		problemsPanel.removeAll();
+		problemsPanel = new MultiValuePanel(consequences, this);
+		add(problemsPanel, "2, 9, fill, default");
+		contextsPanel.removeAll();
+		contextsPanel = new MultiValuePanel(consequences, this);
+		add(contextsPanel, "2, 7, fill, default");
 		this.revalidate();
 	}
 	
