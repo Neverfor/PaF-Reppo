@@ -41,6 +41,8 @@ public class AddNewPatternTask{
 		p.addConsequence(new Consequences("Consequence","jwh"));
 		ArrayList<Category> cate = new ArrayList<Category>();
 		cate.add(c);
+		
+		Repository.getInstance().addPattern(p, cate);
 		p = new Pattern();
 		p.setNaam("Singleton");
 		p.addContext(new Context("S1"));

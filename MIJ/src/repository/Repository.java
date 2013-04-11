@@ -110,6 +110,11 @@ public class Repository {
 		return null;
 	}
 	
+	public void clear(){
+		patterns.clear();
+		categories.clear();
+	}
+	
 	public Config getConfig() {
 		return config;
 	}
