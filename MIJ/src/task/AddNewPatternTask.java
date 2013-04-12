@@ -3,7 +3,6 @@ package task;
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
 
 import javax.swing.JComboBox;
 
@@ -11,6 +10,7 @@ import repository.Repository;
 import domein.Category;
 import domein.Consequences;
 import domein.Context;
+import domein.Diagram;
 import domein.Pattern;
 import domein.Problem;
 
@@ -19,12 +19,16 @@ public class AddNewPatternTask{
 	
 	public void fillCategoryCombobox(JComboBox<Object> cbCategories){
 		Repository rp = Repository.getInstance();
-		Set<Category> categories = rp.getCategories();
+		Collection<Category> categories = rp.getCategories().values();
 		
 		for (Category category: categories){
 			cbCategories.addItem(category);
 		}
 		
+	}
+	
+	public Collection<String> getCategories(){
+		return rp.getCategories().keySet();
 	}
 	
 	public void fillStaticRepo(){
@@ -68,17 +72,15 @@ public class AddNewPatternTask{
 		Repository.getInstance().addPattern(p, cate);
 	}
 
-	public void addPattern(String patternName, String PatternDescription, Object selectedCategory,
+
+	public void addPattern(String patternName, String PatternDescription, String selectedCategory,
 			ArrayList<String> contexts, ArrayList<String> problems,
-			ArrayList<String> consequences) throws InvalidObjectException {	
+			ArrayList<String> consequences,Diagram diagram) throws InvalidObjectException {	
 		Repository rp = Repository.getInstance();
 		Pattern newPattern = new Pattern();
 		newPattern.setDiagram(diagram);
 		newPattern.setDescription(PatternDescription);
 		//TODO: selectedCategory should be an list of categories
-		if(!(selectedCategory instanceof Category)){
-			throw new InvalidObjectException("Category expected");
-		}
 		
 		ArrayList<Consequences> patternConsequences = new ArrayList<Consequences>();
 		for(String consequence: consequences){
@@ -94,9 +96,10 @@ public class AddNewPatternTask{
 		
 		newPattern.setNaam(patternName);
 		newPattern.addContext(new Context(contexts.get(0)));
-		((Category)selectedCategory).addContext(newPattern.getContext().get(0));
+		
+		//((Category)selectedCategory).addContext(newPattern.getContext().get(0));
 		ArrayList<Category> categories = new ArrayList<Category>();
-		categories.add((Category)selectedCategory);
+		categories.add(rp.getCategory(selectedCategory));
 		rp.addPattern(newPattern, categories);
 		System.out.println(rp.toString());
 	}

@@ -88,7 +88,7 @@ public class XMLReader extends Reader {
 						Pattern p = new Pattern();
 						p.setNaam(attributes.getNamedItem("name")
 								.getNodeValue());
-						p.setSolution(attributes.getNamedItem("description")
+						p.setDescription(attributes.getNamedItem("description")
 								.getNodeValue());
 
 						Element e = (Element) n2.item(j);
@@ -140,7 +140,7 @@ public class XMLReader extends Reader {
 			for (Map.Entry<Category, ArrayList<String>> entry : childs
 					.entrySet()) {
 				for (String s : entry.getValue()) {
-					for (Category c : rp.getCategories()) {
+					for (Category c : rp.getCategories().values()) {
 						if (s.equals(c.getName())) {
 							entry.getKey().addChild(c);
 						}
