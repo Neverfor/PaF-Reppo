@@ -119,14 +119,27 @@ public class SelectPatternTask{
 	public String showPattern(String patternName) {
 		String s = " ";
 		int i = 0;
-		for (Pattern p : selectedPatterns){
-			if (p.getNaam() == patternName) {
-				i = i++;
-				s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " /* + p.getConsequences() + " \n context: " + p.getContext();
-			}
-		}
-		return s;
-	}*/
+		for (Category c: categories) {
+			
+			for (Pattern p : selectedPatterns){
+				if (p.getNaam() == patternName) {
+					i = i++;
+					s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " /* + p.getConsequences() + " \n context: " + p.getContext() ;*/
+//				}
+//			}
+//		}
+//		return s;
+//	}
+//
+//		for (Pattern p : selectedPatterns){
+//			if (p.getNaam() == patternName) {
+//				i = i++;
+//				s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " /* + p.getConsequences() + " \n context: " + p.getContext();
+//			}
+//		}
+//		return s;
+//	}*/
+// branch 'master' of https://github.com/Neverfor/PaF-Reppo.git
 
 	
 //	
