@@ -2,6 +2,7 @@ package task;
 
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 import javax.swing.JComboBox;
@@ -14,16 +15,12 @@ import domein.Pattern;
 import domein.Problem;
 
 public class AddNewPatternTask{
+	Repository rp = Repository.getInstance();
 	
-	public void fillCategoryCombobox(JComboBox<Object> cbCategories){
-		Repository rp = Repository.getInstance();
-		Set<Category> categories = rp.getCategories();
-		
-		for (Category category: categories){
-			cbCategories.addItem(category);
-		}
-		
+	public Collection<String> getCategories(){
+		return rp.getCategories().keySet();
 	}
+
 	
 	public void fillStaticRepo(){
 		Category c = new Category("Creational");
@@ -35,8 +32,14 @@ public class AddNewPatternTask{
 		c.addChild(c3);
 		Pattern p = new Pattern();
 		p.setNaam("Factory Method");
-		p.addContext(new Context("Context for test!"));
-		p.addContext(new Context("Context2 for test!"));
+		
+		Context context1 = new Context("Context for test!");
+		Context context2 = new Context("Context2 for test!");
+		p.addContext(context1);
+		p.setDescription("Blablabla");
+		p.addContext(context2);
+		c.addContext(context1);
+		c.addContext(context2);
 		p.addProblem(new Problem("Problem test"));
 		p.addConsequence(new Consequences("Consequence","jwh"));
 		ArrayList<Category> cate = new ArrayList<Category>();
@@ -46,10 +49,19 @@ public class AddNewPatternTask{
 		p.addContext(new Context("S1"));
 		p.addContext(new Context("S2"));
 		p.addProblem(new Problem("single Problem test"));
+		p.setDescription("Description here");
 		p.addConsequence(new Consequences("Consequence","jwhasdf"));
 		cate = new ArrayList<Category>();
 		cate.add(c3);
 		
+		Repository.getInstance().addPattern(p, cate);
+		
+		p = new Pattern();
+		p.setNaam("Akjbasdf");
+		p.addContext(new Context("2dd"));
+		p.addProblem(new Problem("sinsdcsdcs"));
+		p.setDescription("Description here");
+		p.addConsequence(new Consequences("Casdasdonsequence","dasdac"));
 		Repository.getInstance().addPattern(p, cate);
 	}
 

@@ -1,24 +1,26 @@
 package repository;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
-import domein.*;
+import domein.Category;
+import domein.Pattern;
 
 public class Repository {
 
 
-	private HashSet<Category> categories = new HashSet<Category>();
-	private HashSet<Pattern> patterns = new HashSet<Pattern>();
+	private Map<String, Category> categories;
+	private Map<String, Pattern> patterns;
 	private Config config = new Config();
 	
 	private static Repository _instance = null;
 	
 	
 	private Repository () {
-		categories = new HashSet<Category>();
-		patterns = new HashSet<Pattern>();
+		categories = new HashMap<String, Category>();
+		patterns = new HashMap<String, Pattern>();
 	}
 	
 	public static Repository getInstance(){
@@ -43,8 +45,8 @@ public class Repository {
 				getCategory(category.getName()).addChild(newCategory);
 			}
 		}
-		if (!this.categories.contains(newCategory)) {
-			this.categories.add(newCategory);
+		if (!this.categories.containsKey(newCategory.getName())) {
+			this.categories.put(newCategory.getName(),newCategory);
 		}
 	}
 	
@@ -55,8 +57,9 @@ public class Repository {
 	 */
 	//TODO: list of patterns might not be needed, filling it as redundant anyway
 	public void addPattern(Pattern newPattern, ArrayList<Category> categories){	
-		if(!this.patterns.add(newPattern))
+		if(this.patterns.containsKey(newPattern.getNaam()))
 			throw new IllegalArgumentException("Pattern was already defined in repository");
+		this.patterns.put(newPattern.getNaam(), newPattern);
 		for(Category category: categories){
 			if(category.getPatterns().contains(newPattern))
 				throw new IllegalArgumentException("Pattern was already part of " + category.getName());
@@ -69,7 +72,7 @@ public class Repository {
 	 * @return Set<Category>
 	 */
 
-	public Set<Category> getCategories() {
+	public Map<String, Category> getCategories() {
 		return categories; 
 	}
 
@@ -77,17 +80,16 @@ public class Repository {
 	 * Returns all patterns
 	 * @return Set<Pattern>
 	 */
-	public Set<Pattern> getPatterns() {
+	public Map<String, Pattern> getPatterns() {
 		return patterns; 
 	}
 	
 	public Category getCategory(String categoryName) {
-		for (Category c : categories) {
-			if (c.getName().equals(categoryName)) {
-				return c;
-			}
-		}
-		return null;
+		return categories.get(categoryName);
+	}
+	
+	public Pattern getPattern(String patternName) {
+		return patterns.get(patternName);
 	}
 	
 	public PersistenceFactory getPersistanceFactory(){

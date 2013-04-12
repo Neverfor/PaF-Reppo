@@ -33,7 +33,7 @@ public class XMLWriter extends Writer {
 			Element categories = doc.createElement("Categories");
 			rootElement.appendChild(categories);
 
-			for (Category c : Repository.getInstance().getCategories()) {
+			for (Category c : Repository.getInstance().getCategories().values()) {
 				Element category = doc.createElement("Category");
 				category.setAttribute("name", c.getName());
 				categories.appendChild(category);
@@ -58,7 +58,7 @@ public class XMLWriter extends Writer {
 			Element patterns = doc.createElement("Patterns");
 			rootElement.appendChild(patterns);
 
-			for (Pattern p : Repository.getInstance().getPatterns()) {
+			for (Pattern p : Repository.getInstance().getPatterns().values()) {
 				Element pattern = doc.createElement("Pattern");
 				pattern.setAttribute("name", p.getNaam());
 				patterns.appendChild(pattern);

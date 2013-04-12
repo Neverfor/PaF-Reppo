@@ -8,8 +8,10 @@ public class Pattern {
 	private ArrayList<Context> context = new ArrayList<Context>();
 	private String solution;
 	private Diagram diagram;
+	private String description;
 	private ArrayList<Consequences> consequences = new ArrayList<Consequences>();
 	private ArrayList<Problem> problems = new ArrayList<Problem>();
+	
 	
 	public Pattern (){}
 
@@ -87,9 +89,12 @@ public class Pattern {
 
 
 	public String getDescription() {
-		//TODO: dit
-		return "";
+		return description;
 		
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 

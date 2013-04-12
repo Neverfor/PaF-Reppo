@@ -1,8 +1,10 @@
 package task;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import javax.swing.DefaultComboBoxModel;
@@ -19,67 +21,78 @@ public class SelectPatternTask{
 	
 	private ArrayList<Category> categories = new ArrayList<Category>();
 	private ArrayList<Pattern> selectedPatterns = new ArrayList<Pattern>();
-	private Repository rp = Repository.getInstance();
+	private Repository rp = Repository.getInstance();		
+
+	public Collection<String> getCategories(){
+		return rp.getCategories().keySet();
+	}
 	
-	public void fillCategoryCombobox(JComboBox<Object> cbCategory){
-		
-		Set<Category> categories = rp.getCategories();
-		
-		for (Category category: categories){
-			cbCategory.addItem(category);
+	public Collection<String> getContexts(String selectedCategory){		
+		ArrayList<String> coll = new ArrayList<String>();
+		Collection<Pattern> patterns;
+		//get patterns from selected cat, else get all patterns
+		if(rp.getCategory(selectedCategory) == null){
+			patterns = rp.getPatterns().values();
 		}
-		
-	}
-	
-	public void selectPattern(String category)  {	
-		for (Category c : categories) {
-			if(c.getName().equalsIgnoreCase(category)){
-				HashSet hSet = new HashSet();
-				hSet = c.getPatterns();
-				Iterator iter = hSet.iterator();
-				 while(iter.hasNext()) 
-			      {	
-//					 hSet.getClass().getName();
-			         System.out.print(iter.next());
-			         iter.remove();
-			      }
-			}
-			
-			}
-		
-	
-	}
-
-	public void fillContexts(JComboBox<Object> cbContext, Object selectedCategory) {
-		cbContext.removeAllItems();
-		if(selectedCategory instanceof Category){
-			for(Context context: ((Category)selectedCategory).getContexts()){
-				cbContext.addItem(context);
-			}
-
-		}
-	}
-
-	public void fillProblems(JComboBox<Object> cbProblem, Object selectedContext) {
-		cbProblem.removeAllItems();
-		Set<Pattern> patterns = rp.getPatterns();
-		for(Pattern pattern: patterns){
-			if(!(pattern.getContext().isEmpty()) && pattern.getContext().get(0).equals(selectedContext)){
-				for(Problem problem: pattern.getProblems()){
-					cbProblem.addItem(problem);
+		else{
+			patterns = rp.getCategory(selectedCategory).getPatterns();
+			//add contexts from subcategory
+			if(rp.getCategory(selectedCategory).hasChilderen()){
+				for(Category category: rp.getCategory(selectedCategory).getChilds()){
+					coll.addAll(getContexts(category.getName()));
 				}
 			}
 		}
-		
+		for(Pattern pattern: patterns){
+			for(Context context: pattern.getContext())
+				coll.add(context.toString());
+		}
+		return coll;
+	}
+	
+	public Collection<String> getProblems(String selectedCategory, String selectedContext){	
+		ArrayList<String> coll = new ArrayList<String>();
+		Collection<Pattern> patterns;
+		if(rp.getCategory(selectedCategory) == null){
+			patterns = rp.getPatterns().values();		
+		}else{
+			patterns = rp.getCategory(selectedCategory).getPatterns();
+			if(rp.getCategory(selectedCategory).hasChilderen()){
+				for(Category category: rp.getCategory(selectedCategory).getChilds()){
+					coll.removeAll(getProblems(category.getName(), selectedContext));
+					coll.addAll(getProblems(category.getName(), selectedContext));
+				}
+			}
+		}
+		for(Pattern pattern: patterns){
+			if(pattern.getContext() == null || 
+					pattern.getContext().contains(new Context(selectedContext)) || selectedContext == null || selectedContext.isEmpty())			
+				for(Problem problem: pattern.getProblems())
+					if(!coll.contains(problem.toString()))
+						coll.add(problem.toString());
+		}		
+		return coll;
 	}
 
-	public ArrayList<String[]> getResults(Object selectedItem, Object selectedContext,
-			Object selectedProblem) {
-		Set<Pattern> patterns = rp.getPatterns();
+	public ArrayList<String[]> getPatterns(String selectedCategory, String selectedContext, String selectedProblem) {
 		ArrayList<String[]> rtrnList = new ArrayList<String[]>();
-		String[] p = new String[2];
+		Collection<Pattern> patterns;
+		if(rp.getCategory(selectedCategory) == null){
+			patterns = rp.getPatterns().values();		
+		}else{
+			patterns = rp.getCategory(selectedCategory).getPatterns();
+			if(rp.getCategory(selectedCategory).hasChilderen()){
+				for(Category category: rp.getCategory(selectedCategory).getChilds()){
+					patterns.removeAll(category.getPatterns());
+					patterns.addAll(category.getPatterns());
+				}
+			}
+		}
+				
 		for(Pattern pattern: patterns){
-			if(!(pattern.getContext().isEmpty()) && pattern.getContext().get(0).equals(selectedContext) && pattern.getProblems().contains(selectedProblem)){
+			String[] p = new String[2];
+			if((pattern.getContext().contains(new Context(selectedContext)) || selectedContext.isEmpty())
+					&& (pattern.getProblems().contains(new Problem(selectedProblem)) || selectedProblem.isEmpty())){
 				p[0] =  pattern.getNaam();
 				p[1] = pattern.getDescription();
 				rtrnList.add(p);
