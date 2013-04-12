@@ -59,20 +59,14 @@ public class MainWindow {
 		addPatternItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.getContentPane().remove(panel);
-				panel = new AddPatternPanel();
-				frame.getContentPane().add(panel, BorderLayout.CENTER);
-				frame.getContentPane().revalidate();
+				loadPanel(new AddPatternPanel());
 			}
 		});
 		
 		selectPatternItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.getContentPane().remove(panel);
-				panel = new SelectPatternPanel();
-				frame.getContentPane().add(panel, BorderLayout.CENTER);
-				frame.getContentPane().revalidate();
+				loadPanel(new SelectPatternPanel());
 			}
 		});
 		patternsMenu.add(addPatternItem);
@@ -82,10 +76,7 @@ public class MainWindow {
 		addCategoryItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.getContentPane().remove(panel);
-				panel = new AddCategoryPanel();
-				frame.getContentPane().add(panel, BorderLayout.CENTER);
-				frame.getContentPane().revalidate();
+				loadPanel(new AddCategoryPanel());
 			}
 		});
 		categoriesMenu.add(addCategoryItem);
@@ -134,14 +125,16 @@ public class MainWindow {
 		editConfig.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				frame.getContentPane().remove(panel);
-				panel = new ConfigPanel();
-				frame.getContentPane().add(panel, BorderLayout.CENTER);
-				frame.getContentPane().revalidate();
+				loadPanel(new ConfigPanel());
 			}
 		});
 		configMenu.add(editConfig);
 		
 	}
 
+	public void loadPanel(JPanel newPanel){
+		this.frame.getContentPane().remove(this.panel);
+		this.frame.getContentPane().add(newPanel);
+		this.frame.getContentPane().revalidate();
+	}
 }
