@@ -81,26 +81,18 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 		
 		
 		JPanel resultPanel = new JPanel();
-		//resultPanel.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		add(resultPanel, "4, 7, fill, default");
 		
-		
-		
-		//resultPanel.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		
-		
+			
 		JPanel scrollPanel = new JPanel();
 		scrollPanel.setLayout(new BorderLayout(2, 2));
 		JScrollPane scrollPane = new JScrollPane(scrollPanel);
 		contentPanel = new JPanel(new GridLayout(0, 2, 3, 3));
 		scrollPanel.add(contentPanel);
 		
-		resultPanel.add(scrollPane);
-						
-							
+		resultPanel.add(scrollPane);			
 	}
 	
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String selectedCategory = "";
@@ -141,14 +133,9 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					JLabel infoLabel = new JLabel();
 					frame.getContentPane().add(infoLabel, BorderLayout.CENTER);
-//					frame.setBounds(500, 500, 755, 655);
 					frame.setSize(400,400);
 					frame.setLocation(400, 250);
-//					panel = new JPanel();
-//					panel.setBounds(200, 200, 200, 200);
-//					frame.add(panel);
 					frame.add(infoLabel);
-//					frame.pack();
 					frame.setVisible(true);
 					infoLabel.setText(task.showPattern(patternName));
 					task.showPattern(patternName);					
