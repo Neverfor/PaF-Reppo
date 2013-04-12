@@ -29,6 +29,7 @@ import domein.Context;
 @SuppressWarnings("serial")
 public class SelectPatternPanel extends JPanel implements ActionListener {
 	private SelectPatternTask task;
+//	private ShowPatternPanel showPan;
 	private JComboBox<String> cbContext;
 	private JComboBox<String> cbProblem;
 	private JComboBox<String> cbCategory;
@@ -140,14 +141,14 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					JLabel infoLabel = new JLabel();
 					frame.getContentPane().add(infoLabel, BorderLayout.CENTER);
-					frame.setBounds(500, 500, 755, 655);
+//					frame.setBounds(500, 500, 755, 655);
 					frame.setSize(400,400);
 					frame.setLocation(400, 250);
 //					panel = new JPanel();
 //					panel.setBounds(200, 200, 200, 200);
 //					frame.add(panel);
 					frame.add(infoLabel);
-					frame.pack();
+//					frame.pack();
 					frame.setVisible(true);
 					infoLabel.setText(task.showPattern(patternName));
 					task.showPattern(patternName);					
