@@ -12,6 +12,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import repository.Repository;
 import userinterface.SelectPatternPanel;
+import userinterface.ShowPatternPanel;
 import domein.Category;
 import domein.Context;
 import domein.Pattern;
@@ -102,30 +103,22 @@ public class SelectPatternTask{
 	}
 
 	public String showPattern(String patternName) {
-		String s = " DOG";
+		String s = " ";
 		int i = 0;
 		for (Pattern p : selectedPatterns){
 			if (p.getNaam() == patternName) {
 				i = i++;
-//				s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " + p.getConsequences() + " \n context: " + p.getContext();
+				s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " /* + p.getConsequences() + " \n context: " + p.getContext() */;
 			}
 		}
 		return s;
 	}
 
 	
-	
-//	public void showPattern(String patternName) {
-//		HashSet<Pattern> patterns = new HashSet<Pattern>();
-//		for (Category c : categories) {  
-//			for (Pattern p: patterns){
-//				p.getNaam();
-//				p.getConsequences();
-//				p.getDescription();
-//				p.getContext();
-//				System.out.println("Name" + p.getNaam() + " Description : " +  p.getDescription());
-//				
-//			}
-//		}
+//	
+//	public void showPatternInfo(String patternName) {
+//		ShowPatternPanel showPan = new ShowPatternPanel();
+//		
+//		
 //	}
 }
