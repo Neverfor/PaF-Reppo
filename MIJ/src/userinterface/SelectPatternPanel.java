@@ -135,16 +135,16 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 					
 					JLabel infoLabel = new JLabel();
 					frame.getContentPane().add(infoLabel, BorderLayout.WEST);
-					infoLabel.setBounds(100,100,150,30);
+					infoLabel.setBounds(100,100,150,50);
 					JLabel infoLabel2 = new JLabel();
 					frame.getContentPane().add(infoLabel2, BorderLayout.WEST);
-					infoLabel2.setBounds(100,120,150,30);
+					infoLabel2.setBounds(100,120,150,50);
 					JLabel infoLabel3 = new JLabel();
 					frame.getContentPane().add(infoLabel3, BorderLayout.WEST);
-					infoLabel3.setBounds(100,140,150,30);
+					infoLabel3.setBounds(100,140,150,50);
 					JLabel infoLabel4 = new JLabel();
 					frame.getContentPane().add(infoLabel4, BorderLayout.WEST);
-					infoLabel4.setBounds(100,160,150,30);
+					infoLabel4.setBounds(100,160,150,50);
 					
 					frame.setSize(400,400);
 					frame.setLocation(400, 250);
