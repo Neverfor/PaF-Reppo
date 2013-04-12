@@ -102,17 +102,34 @@ public class SelectPatternTask{
 		return rtrnList;
 	}
 
+
+
+	public void showPattern(String patternName) {
+		ArrayList<Pattern> pp = new ArrayList<Pattern>();
+		Pattern p = rp.getPattern(patternName);
+		p.getNaam();
+		p.getConsequences();
+		p.getDescription();
+		p.getContext();
+		System.out.println("Name" + p.getNaam() + " Description : "
+				+ p.getDescription());
+
+	}
+	/*
 	public String showPattern(String patternName) {
 		String s = " ";
 		int i = 0;
-		for (Pattern p : selectedPatterns){
-			if (p.getNaam() == patternName) {
-				i = i++;
-				s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " /* + p.getConsequences() + " \n context: " + p.getContext() */;
-			}
-		}
-		return s;
-	}
+		for (Category c: categories) {
+			
+			for (Pattern p : selectedPatterns){
+				if (p.getNaam() == patternName) {
+					i = i++;
+					s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " /* + p.getConsequences() + " \n context: " + p.getContext() ;*/
+//				}
+//			}
+//		}
+//		return s;
+//	}
 
 	
 //	
