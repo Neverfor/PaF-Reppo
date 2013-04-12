@@ -88,18 +88,31 @@ public class SelectPatternTask{
 		return rtrnList;
 	}
 
-	public void showPattern(String patternName) {
-		ArrayList<Pattern> pp = new ArrayList<Pattern>();
-		for (Category c : categories) {
-			pp = c.getPattern(patternName); 
-			for (Pattern p: pp){
-				p.getNaam();
-				p.getConsequences();
-				p.getDescription();
-				p.getContext();
-				System.out.println("Name" + p.getNaam() + " Description : " +  p.getDescription());
+	public String showPattern(String patternName) {
+		String s = " DOG";
+		int i = 0;
+		for (Pattern p : selectedPatterns){
+			if (p.getNaam() == patternName) {
+				i = i++;
+//				s += "\n " + i + " result" + p.getNaam() + "  \n consequences: " + p.getConsequences() + " \n context: " + p.getContext();
 			}
 		}
-		
+		return s;
 	}
+
+	
+	
+//	public void showPattern(String patternName) {
+//		HashSet<Pattern> patterns = new HashSet<Pattern>();
+//		for (Category c : categories) {  
+//			for (Pattern p: patterns){
+//				p.getNaam();
+//				p.getConsequences();
+//				p.getDescription();
+//				p.getContext();
+//				System.out.println("Name" + p.getNaam() + " Description : " +  p.getDescription());
+//				
+//			}
+//		}
+//	}
 }

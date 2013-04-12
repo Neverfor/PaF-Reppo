@@ -1,5 +1,6 @@
 package userinterface;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class SelectPatternPanel extends JPanel {
 	private JComboBox<Object> cbProblem;
 	private JComboBox<Object> cbCategory;
 	private JPanel resultPanel;
+	private JLabel res;
  
 	public SelectPatternPanel() {
 		task = new SelectPatternTask();
@@ -82,9 +84,15 @@ public class SelectPatternPanel extends JPanel {
 								
 							}
 						});
+						
+						
 						add(cbProblem, "4, 5, fill, default");
 						
+						JLabel res = new JLabel("De result");
+						add(res, "2, 7, right, default");
+						
 						resultPanel = new JPanel();
+						
 						add(resultPanel, "4, 7, fill, fill");
 						resultPanel.setLayout(new GridLayout(0, 3, 0, 0));					
 						
@@ -99,7 +107,7 @@ public class SelectPatternPanel extends JPanel {
 			showPattern.addActionListener(new ActionListener() {				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					task.showPattern(patternName);					
+					res.setText(task.showPattern(patternName));					
 				}
 			});
 			resultPanel.add(showPattern);
