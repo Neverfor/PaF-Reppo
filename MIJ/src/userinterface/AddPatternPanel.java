@@ -35,7 +35,7 @@ public class AddPatternPanel extends JPanel {
 	private HashMap<JButton, JTextField> problems;
 	private HashMap<JButton, JTextField> consequences;
 	
-	private JPanel consequencesPanel;
+	private JPanel consequencesPanel,problemsPanel,contextsPanel;
 
 	/**
 	 * Create the panel.
@@ -91,11 +91,11 @@ public class AddPatternPanel extends JPanel {
 		/* CONTEXTS */
 		JLabel lblContexts = new JLabel("Context");
 		add(lblContexts, "1, 7");
-		JPanel contextsPanel = new MultiValuePanel(contexts, this);
+		contextsPanel = new MultiValuePanel(contexts, this);
 		add(contextsPanel, "2, 7, fill, default");
 
 		/* PROBLEMS */
-		JPanel problemsPanel = new MultiValuePanel(problems, this);
+		problemsPanel = new MultiValuePanel(problems, this);
 		add(problemsPanel, "2, 9, fill, default");
 		JLabel lblProblems = new JLabel("Problems");
 		add(lblProblems, "1, 9");
@@ -125,15 +125,26 @@ public class AddPatternPanel extends JPanel {
 	public void clearAll(){
 		tfPatternName.setText("");
 		tfDescription.setText("");
-		consequencesPanel.removeAll();
-		consequencesPanel = new MultiValuePanel(consequences, this);
-		add(consequencesPanel, "2, 11, fill, default");
+		for(JTextField tf: this.consequences.values()){
+			tf.setText("");
+		}
 		for(JTextField tf: this.problems.values()){
 			tf.setText("");
 		}
 		for(JTextField tf: this.contexts.values()){
 			tf.setText("");
 		}
+		/*//Werkt niet goed met de export
+		consequencesPanel.removeAll();
+		consequencesPanel = new MultiValuePanel(consequences, this);
+		add(consequencesPanel, "2, 11, fill, default");
+		problemsPanel.removeAll();
+		problemsPanel = new MultiValuePanel(consequences, this);
+		add(problemsPanel, "2, 9, fill, default");
+		contextsPanel.removeAll();
+		contextsPanel = new MultiValuePanel(consequences, this);
+		add(contextsPanel, "2, 7, fill, default");
+		*/
 		this.revalidate();
 	}
 	
@@ -152,7 +163,7 @@ public class AddPatternPanel extends JPanel {
 			consequences.add(tf.getText());
 		}
 		try {
-			task.addPattern(tfPatternName.getText(), tfDescription.getText(), cbCategories.getSelectedItem(), contexts, problems, consequences);
+			task.addPattern(tfPatternName.getText(), tfDescription.getText(), cbCategories.getSelectedItem(), contexts, problems, consequences,null);
 			JOptionPane.showMessageDialog(null, "Pattern added succesfully", 
 					"Pattern proceccing...",JOptionPane.INFORMATION_MESSAGE);
 		} catch (InvalidObjectException e) {

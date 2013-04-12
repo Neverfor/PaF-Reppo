@@ -17,10 +17,15 @@ import domein.Problem;
 public class AddNewPatternTask{
 	Repository rp = Repository.getInstance();
 	
-	public Collection<String> getCategories(){
-		return rp.getCategories().keySet();
+	public void fillCategoryCombobox(JComboBox<Object> cbCategories){
+		Repository rp = Repository.getInstance();
+		Set<Category> categories = rp.getCategories();
+		
+		for (Category category: categories){
+			cbCategories.addItem(category);
+		}
+		
 	}
-
 	
 	public void fillStaticRepo(){
 		Category c = new Category("Creational");
@@ -32,25 +37,23 @@ public class AddNewPatternTask{
 		c.addChild(c3);
 		Pattern p = new Pattern();
 		p.setNaam("Factory Method");
-		
-		Context context1 = new Context("Context for test!");
-		Context context2 = new Context("Context2 for test!");
-		p.addContext(context1);
-		p.setDescription("Blablabla");
-		p.addContext(context2);
-		c.addContext(context1);
-		c.addContext(context2);
+		p.addContext(new Context("Context for test!"));
+		p.addContext(new Context("Context2 for test!"));
 		p.addProblem(new Problem("Problem test"));
+		Diagram d = new Diagram("Factory Method","c:\\test.xml");
+		p.setDiagram(d);
+		p.setDescription("Solution");
 		p.addConsequence(new Consequences("Consequence","jwh"));
 		ArrayList<Category> cate = new ArrayList<Category>();
 		cate.add(c);
+		
+		Repository.getInstance().addPattern(p, cate);
 		p = new Pattern();
 		p.setNaam("Singleton");
-		p.addContext(new Context("S1"));
-		p.addContext(new Context("S2"));
+		p.addContext(new Context("Create a single object"));
+		p.addContext(new Context("Object persists until application persists"));
 		p.addProblem(new Problem("single Problem test"));
-		p.setDescription("Description here");
-		p.addConsequence(new Consequences("Consequence","jwhasdf"));
+		p.addConsequence(new Consequences("Consequence","Singleton is B.A.D."));
 		cate = new ArrayList<Category>();
 		cate.add(c3);
 		
@@ -70,6 +73,8 @@ public class AddNewPatternTask{
 			ArrayList<String> consequences) throws InvalidObjectException {	
 		Repository rp = Repository.getInstance();
 		Pattern newPattern = new Pattern();
+		newPattern.setDiagram(diagram);
+		newPattern.setDescription(PatternDescription);
 		//TODO: selectedCategory should be an list of categories
 		if(!(selectedCategory instanceof Category)){
 			throw new InvalidObjectException("Category expected");

@@ -6,12 +6,10 @@ import java.util.ArrayList;
 public class Pattern {
 	private String naam;
 	private ArrayList<Context> context = new ArrayList<Context>();
-	private String solution;
+
 	private Diagram diagram;
-	private String description;
 	private ArrayList<Consequences> consequences = new ArrayList<Consequences>();
 	private ArrayList<Problem> problems = new ArrayList<Problem>();
-	
 	
 	public Pattern (){}
 
@@ -98,12 +96,4 @@ public class Pattern {
 	}
 
 
-	public String getSolution() {
-		return solution;
-	}
-
-
-	public void setSolution(String solution) {
-		this.solution = solution;
-	}
 }
