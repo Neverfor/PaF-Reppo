@@ -13,6 +13,7 @@ import org.w3c.dom.*;
 import domein.Category;
 import domein.Consequences;
 import domein.Context;
+import domein.Diagram;
 import domein.Pattern;
 import domein.Problem;
 import repository.Repository;
@@ -87,6 +88,8 @@ public class XMLReader extends Reader {
 						Pattern p = new Pattern();
 						p.setNaam(attributes.getNamedItem("name")
 								.getNodeValue());
+						p.setSolution(attributes.getNamedItem("description")
+								.getNodeValue());
 
 						Element e = (Element) n2.item(j);
 						NodeList nodecontexts = e
@@ -95,6 +98,13 @@ public class XMLReader extends Reader {
 								.getElementsByTagName("Problem");
 						NodeList nodeConsequences = e
 								.getElementsByTagName("Consequence");
+						NodeList nodeimg = e.getElementsByTagName("image");
+						
+						for (int t = 0; t < nodeimg.getLength(); t++) {
+							attributes = nodeimg.item(t).getAttributes();
+							Diagram d = new Diagram(attributes.getNamedItem("name").getNodeValue(),attributes.getNamedItem("location").getNodeValue());
+							p.setDiagram(d);
+						} 
 
 						for (int t = 0; t < nodecontexts.getLength(); t++) {
 							p.addContext(new Context(nodecontexts.item(t)

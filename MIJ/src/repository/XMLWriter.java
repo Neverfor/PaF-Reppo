@@ -11,6 +11,7 @@ import org.w3c.dom.*;
 import domein.Category;
 import domein.Consequences;
 import domein.Context;
+import domein.Diagram;
 import domein.Pattern;
 import domein.Problem;
 
@@ -33,7 +34,7 @@ public class XMLWriter extends Writer {
 			Element categories = doc.createElement("Categories");
 			rootElement.appendChild(categories);
 
-			for (Category c : Repository.getInstance().getCategories()) {
+			for (Category c : Repository.getInstance().getCategories().values()) {
 				Element category = doc.createElement("Category");
 				category.setAttribute("name", c.getName());
 				categories.appendChild(category);
@@ -58,10 +59,17 @@ public class XMLWriter extends Writer {
 			Element patterns = doc.createElement("Patterns");
 			rootElement.appendChild(patterns);
 
-			for (Pattern p : Repository.getInstance().getPatterns()) {
+			for (Pattern p : Repository.getInstance().getPatterns().values()) {
 				Element pattern = doc.createElement("Pattern");
 				pattern.setAttribute("name", p.getNaam());
+				pattern.setAttribute("description", p.getDescription());
 				patterns.appendChild(pattern);
+				if(d != null){
+					Element image = doc.createElement("image");
+					image.setAttribute("name", d.getNaam());
+					image.setAttribute("location", d.getDirectory());
+					pattern.appendChild(image);
+				}
 
 				Element contexts = doc.createElement("Contexts");
 				pattern.appendChild(contexts);

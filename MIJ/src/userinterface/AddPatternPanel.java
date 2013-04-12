@@ -30,7 +30,7 @@ public class AddPatternPanel extends JPanel {
 	private AddNewPatternTask task;
 	private JTextField tfPatternName;
 	private JTextField tfDescription;
-	private JComboBox<Object> cbCategories;
+	private JComboBox<String> cbCategories;
 	private HashMap<JButton, JTextField> contexts;
 	private HashMap<JButton, JTextField> problems;
 	private HashMap<JButton, JTextField> consequences;
@@ -85,8 +85,7 @@ public class AddPatternPanel extends JPanel {
 		//TODO: Allow more categories?
 		JLabel lblCategoryName = new JLabel("Category");
 		add(lblCategoryName, "1, 5, left, fill");
-		cbCategories = new JComboBox<Object>();
-		task.fillCategoryCombobox(cbCategories);
+		cbCategories = new JComboBox<String>(task.getCategories().toArray(new String[0]));
 		add(cbCategories, "2, 5, fill, default");
 		
 		/* CONTEXTS */
@@ -164,7 +163,7 @@ public class AddPatternPanel extends JPanel {
 			consequences.add(tf.getText());
 		}
 		try {
-			task.addPattern(tfPatternName.getText(), tfDescription.getText(), cbCategories.getSelectedItem(), contexts, problems, consequences);
+			task.addPattern(tfPatternName.getText(), tfDescription.getText(), cbCategories.getSelectedItem(), contexts, problems, consequences,null);
 			JOptionPane.showMessageDialog(null, "Pattern added succesfully", 
 					"Pattern proceccing...",JOptionPane.INFORMATION_MESSAGE);
 		} catch (InvalidObjectException e) {

@@ -2,6 +2,7 @@ package task;
 
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 import javax.swing.JComboBox;
@@ -14,6 +15,7 @@ import domein.Pattern;
 import domein.Problem;
 
 public class AddNewPatternTask{
+	Repository rp = Repository.getInstance();
 	
 	public void fillCategoryCombobox(JComboBox<Object> cbCategories){
 		Repository rp = Repository.getInstance();
@@ -38,6 +40,9 @@ public class AddNewPatternTask{
 		p.addContext(new Context("Context for test!"));
 		p.addContext(new Context("Context2 for test!"));
 		p.addProblem(new Problem("Problem test"));
+		Diagram d = new Diagram("Factory Method","c:\\test.xml");
+		p.setDiagram(d);
+		p.setDescription("Solution");
 		p.addConsequence(new Consequences("Consequence","jwh"));
 		ArrayList<Category> cate = new ArrayList<Category>();
 		cate.add(c);
@@ -53,6 +58,14 @@ public class AddNewPatternTask{
 		cate.add(c3);
 		
 		Repository.getInstance().addPattern(p, cate);
+		
+		p = new Pattern();
+		p.setNaam("Akjbasdf");
+		p.addContext(new Context("2dd"));
+		p.addProblem(new Problem("sinsdcsdcs"));
+		p.setDescription("Description here");
+		p.addConsequence(new Consequences("Casdasdonsequence","dasdac"));
+		Repository.getInstance().addPattern(p, cate);
 	}
 
 	public void addPattern(String patternName, String PatternDescription, Object selectedCategory,
@@ -60,6 +73,8 @@ public class AddNewPatternTask{
 			ArrayList<String> consequences) throws InvalidObjectException {	
 		Repository rp = Repository.getInstance();
 		Pattern newPattern = new Pattern();
+		newPattern.setDiagram(diagram);
+		newPattern.setDescription(PatternDescription);
 		//TODO: selectedCategory should be an list of categories
 		if(!(selectedCategory instanceof Category)){
 			throw new InvalidObjectException("Category expected");

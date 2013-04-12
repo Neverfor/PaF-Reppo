@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Pattern {
 	private String naam;
 	private ArrayList<Context> context = new ArrayList<Context>();
-	private String solution;
+
 	private Diagram diagram;
 	private ArrayList<Consequences> consequences = new ArrayList<Consequences>();
 	private ArrayList<Problem> problems = new ArrayList<Problem>();
@@ -87,18 +87,13 @@ public class Pattern {
 
 
 	public String getDescription() {
-		//TODO: dit
-		return "";
+		return description;
 		
 	}
-
-
-	public String getSolution() {
-		return solution;
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 
-	public void setSolution(String solution) {
-		this.solution = solution;
-	}
 }

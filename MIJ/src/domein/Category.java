@@ -105,6 +105,10 @@ public class Category {
 		this.contexts.add(context);
 		
 	}
+	
+	public boolean hasChilderen(){
+		return !childs.isEmpty();
+	}
 
 }
 
