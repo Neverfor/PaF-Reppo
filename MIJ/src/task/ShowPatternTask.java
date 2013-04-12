@@ -26,10 +26,10 @@ public class ShowPatternTask{
 	public Collection<String> getCategories(){
 		return rp.getCategories().keySet();
 	}
-
+	
 
 	public String showPatternInfo(String patternName) {
-		String s = " DOG";
+		String s = " Stringy";
 		int i = 0;
 		for (Pattern p : selectedPatterns){
 			if (p.getNaam() == patternName) {

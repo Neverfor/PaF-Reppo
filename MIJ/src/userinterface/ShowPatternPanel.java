@@ -48,7 +48,7 @@ public class ShowPatternPanel extends JPanel implements ActionListener {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 						
-		JLabel lblCategory = new JLabel("Category:");
+		JLabel lblCategory = new JLabel("Pattern(s):");
 		add(lblCategory, "2, 1, right, center");
 		
 		

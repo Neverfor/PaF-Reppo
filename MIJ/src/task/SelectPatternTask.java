@@ -22,7 +22,8 @@ public class SelectPatternTask{
 	
 	private ArrayList<Category> categories = new ArrayList<Category>();
 	private ArrayList<Pattern> selectedPatterns = new ArrayList<Pattern>();
-	private Repository rp = Repository.getInstance();		
+	private Repository rp = Repository.getInstance();
+	private ShowPatternTask task;
 
 	public Collection<String> getCategories(){
 		return rp.getCategories().keySet();
@@ -113,6 +114,7 @@ public class SelectPatternTask{
 		p.getContext();
 		System.out.println("Name" + p.getNaam() + " Description : "
 				+ p.getDescription());
+		
 
 	}
 	/*
