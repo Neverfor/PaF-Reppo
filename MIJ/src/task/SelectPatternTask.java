@@ -104,8 +104,9 @@ public class SelectPatternTask{
 		String is = "";
 	
 		//test in system ------>>>
-		System.out.println("Name" + p.getNaam() + " "  );
+		System.out.println("Name" + p.getNaam() );
 		//<<<------ end of the test
+		
 		is += " Name" + p.getNaam();
 		return is;
 
@@ -119,6 +120,7 @@ public class SelectPatternTask{
 		//test in system ------>>>
 		System.out.println("  " + " Description : " + p.getDescription() );
 		//<<<------ end of the test
+		
 		is += " " + " Description : " + p.getDescription();
 		return is;
 
@@ -139,6 +141,7 @@ public class SelectPatternTask{
 		//test in system ------>>>
 		System.out.println(" Problems: " + prob );
 		//<<<------ end of the test
+		
 		is += " " + " Problems : " + prob;
 		return is;
 
@@ -157,9 +160,9 @@ public class SelectPatternTask{
 		}
 
 		//test in system ------>>>
-		System.out.println("Name" + p.getNaam() + newline + " Description : "
-				+ p.getDescription() + cons);
+		System.out.println(" Consequences: " + cons);
 		//<<<------ end of the test
+		
 		is += " " + " Consequences : " + cons;
 		return is;
 
