@@ -40,19 +40,15 @@ public class ShowPatternTask{
 		return s;
 	}
 
-	
-	
-//	public void showPattern(String patternName) {
-//		HashSet<Pattern> patterns = new HashSet<Pattern>();
-//		for (Category c : categories) {  
-//			for (Pattern p: patterns){
-//				p.getNaam();
-//				p.getConsequences();
-//				p.getDescription();
-//				p.getContext();
-//				System.out.println("Name" + p.getNaam() + " Description : " +  p.getDescription());
-//				
-//			}
-//		}
-//	}
+	public void showPattern(String patternName) {
+		ArrayList<Pattern> pp = new ArrayList<Pattern>();
+		Pattern p = rp.getPattern(patternName);
+		p.getNaam();
+		p.getConsequences();
+		p.getDescription();
+		p.getContext();
+		System.out.println("Name" + p.getNaam() + " Description : "
+				+ p.getDescription());
+
+	}
 }
