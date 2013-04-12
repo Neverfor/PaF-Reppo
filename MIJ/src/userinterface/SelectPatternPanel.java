@@ -140,10 +140,12 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					JLabel infoLabel = new JLabel();
 					frame.getContentPane().add(infoLabel, BorderLayout.CENTER);
-					frame.setBounds(100, 100, 755, 655);
-					panel = new JPanel();
-					panel.setBounds(0, 0, 200, 200);
-					frame.add(panel);
+					frame.setBounds(500, 500, 755, 655);
+					frame.setSize(400,400);
+					frame.setLocation(400, 250);
+//					panel = new JPanel();
+//					panel.setBounds(200, 200, 200, 200);
+//					frame.add(panel);
 					frame.add(infoLabel);
 					frame.pack();
 					frame.setVisible(true);
