@@ -164,7 +164,7 @@ public class AddPatternPanel extends JPanel {
 			consequences.add(tf.getText());
 		}
 		try {
-			task.addPattern(tfPatternName.getText(), tfDescription.getText(), cbCategories.getSelectedItem(), contexts, problems, consequences);
+			task.addPattern(tfPatternName.getText(), tfDescription.getText(), cbCategories.getSelectedItem(), contexts, problems, consequences,null);
 			JOptionPane.showMessageDialog(null, "Pattern added succesfully", 
 					"Pattern proceccing...",JOptionPane.INFORMATION_MESSAGE);
 		} catch (InvalidObjectException e) {

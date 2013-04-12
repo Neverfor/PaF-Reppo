@@ -87,8 +87,7 @@ public class Pattern {
 
 
 	public String getDescription() {
-		//TODO: dit
-		return "";
+		return getSolution();
 		
 	}
 

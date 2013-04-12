@@ -10,6 +10,7 @@ import repository.Repository;
 import domein.Category;
 import domein.Consequences;
 import domein.Context;
+import domein.Diagram;
 import domein.Pattern;
 import domein.Problem;
 
@@ -38,6 +39,9 @@ public class AddNewPatternTask{
 		p.addContext(new Context("Context for test!"));
 		p.addContext(new Context("Context2 for test!"));
 		p.addProblem(new Problem("Problem test"));
+		Diagram d = new Diagram("Factory Method","c:\\test.xml");
+		p.setDiagram(d);
+		p.setSolution("Solution");
 		p.addConsequence(new Consequences("Consequence","jwh"));
 		ArrayList<Category> cate = new ArrayList<Category>();
 		cate.add(c);
@@ -57,9 +61,11 @@ public class AddNewPatternTask{
 
 	public void addPattern(String patternName, String PatternDescription, Object selectedCategory,
 			ArrayList<String> contexts, ArrayList<String> problems,
-			ArrayList<String> consequences) throws InvalidObjectException {	
+			ArrayList<String> consequences,Diagram diagram) throws InvalidObjectException {	
 		Repository rp = Repository.getInstance();
 		Pattern newPattern = new Pattern();
+		newPattern.setDiagram(diagram);
+		newPattern.setSolution(PatternDescription);
 		//TODO: selectedCategory should be an list of categories
 		if(!(selectedCategory instanceof Category)){
 			throw new InvalidObjectException("Category expected");
