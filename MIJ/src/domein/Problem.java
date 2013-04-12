@@ -8,7 +8,11 @@ public class Problem {
 		this.problem = problem;
 	}
 	
-	public String toString(){
+	public String getProblem(){
 		return problem;
+	}
+	
+	public void setProblem(String Pr) {
+		this.problem = Pr;
 	}
 }
