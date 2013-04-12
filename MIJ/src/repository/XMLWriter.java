@@ -60,6 +60,7 @@ public class XMLWriter extends Writer {
 			rootElement.appendChild(patterns);
 
 			for (Pattern p : Repository.getInstance().getPatterns().values()) {
+				Diagram d = p.getDiagram();
 				Element pattern = doc.createElement("Pattern");
 				pattern.setAttribute("name", p.getNaam());
 				pattern.setAttribute("description", p.getDescription());

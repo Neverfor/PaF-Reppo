@@ -10,6 +10,7 @@ public class Pattern {
 	private Diagram diagram;
 	private ArrayList<Consequences> consequences = new ArrayList<Consequences>();
 	private ArrayList<Problem> problems = new ArrayList<Problem>();
+	private String description;
 	
 	public Pattern (){}
 

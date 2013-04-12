@@ -130,7 +130,7 @@ public class AddCategoryPanel extends JPanel {
 			contentPanel = new JPanel(new GridLayout(0, 2, 3, 3));
 			scrollPanel.add(contentPanel);
 
-			JComboBox<String> cb1 = new JComboBox<String>();
+			JComboBox<String> cb1 = new JComboBox<String>(task.getCategories().toArray(new String[0]));
 			cb1.addItem(null);
 			
 			JButton removeButton1 = new JButton("Del");
