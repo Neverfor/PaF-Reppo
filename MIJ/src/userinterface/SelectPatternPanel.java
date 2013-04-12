@@ -1,6 +1,7 @@
 package userinterface;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JFrame;
 
 import task.SelectPatternTask;
 
@@ -30,7 +32,7 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 	private JComboBox<String> cbContext;
 	private JComboBox<String> cbProblem;
 	private JComboBox<String> cbCategory;
-	private JPanel contentPanel;
+	private JPanel contentPanel, panel;
  
 	public SelectPatternPanel() {
 		task = new SelectPatternTask();
@@ -82,6 +84,10 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 		add(resultPanel, "4, 7, fill, default");
 		
 		
+		
+		//resultPanel.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		
+		
 		JPanel scrollPanel = new JPanel();
 		scrollPanel.setLayout(new BorderLayout(2, 2));
 		JScrollPane scrollPane = new JScrollPane(scrollPanel);
@@ -130,6 +136,18 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 			showPattern.addActionListener(new ActionListener() {				
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					JFrame frame = new JFrame("Pattern Info");
+					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					JLabel infoLabel = new JLabel();
+					frame.getContentPane().add(infoLabel, BorderLayout.CENTER);
+					frame.setBounds(100, 100, 755, 655);
+					panel = new JPanel();
+					panel.setBounds(0, 0, 200, 200);
+					frame.add(panel);
+					frame.add(infoLabel);
+					frame.pack();
+					frame.setVisible(true);
+					infoLabel.setText(task.showPattern(patternName));
 					task.showPattern(patternName);					
 				}
 			});

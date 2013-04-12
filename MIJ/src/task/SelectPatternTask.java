@@ -105,16 +105,19 @@ public class SelectPatternTask{
 
 
 
-	public void showPattern(String patternName) {
+	public String showPattern(String patternName) {
 		ArrayList<Pattern> pp = new ArrayList<Pattern>();
 		Pattern p = rp.getPattern(patternName);
+		String is = "";
 		p.getNaam();
 		p.getConsequences();
 		p.getDescription();
 		p.getContext();
 		System.out.println("Name" + p.getNaam() + " Description : "
 				+ p.getDescription());
-		
+		is += "\n Name" + p.getNaam() + " \n Description : "
+				+ p.getDescription();
+		return is;
 
 	}
 	/*
