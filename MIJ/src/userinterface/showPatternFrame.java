@@ -1,7 +1,5 @@
 package userinterface;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -10,7 +8,6 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.RowSpec;
 
-import task.SelectPatternTask;
 import task.ShowPatternTask;
 
 public class showPatternFrame extends JFrame{

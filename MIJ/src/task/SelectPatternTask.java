@@ -6,7 +6,6 @@ import java.util.Collection;
 import repository.Repository;
 
 import domein.Category;
-import domein.Consequences;
 import domein.Context;
 import domein.Pattern;
 import domein.Problem;
