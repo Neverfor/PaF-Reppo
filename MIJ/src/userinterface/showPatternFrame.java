@@ -40,8 +40,14 @@ public class showPatternFrame extends JFrame{
 				RowSpec.decode("default:grow"),}));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		JLabel infoLabel = new JLabel("test");
+		JLabel infoLabel = new JLabel("");
 		getContentPane().add(infoLabel, "1, 1, right, center");
+		JLabel infoLabel2 = new JLabel("");
+		getContentPane().add(infoLabel2, "1, 3, right, center");
+		JLabel infoLabel3 = new JLabel("");
+		getContentPane().add(infoLabel3, "1, 5, right, center");
+		JLabel infoLabel4 = new JLabel("");
+		getContentPane().add(infoLabel4, "1, 7, right, center");
 		/*infoLabel.setBounds(100,100,150,50);
 		JLabel infoLabel2 = new JLabel();
 		getContentPane().add(infoLabel2, BorderLayout.WEST);
@@ -61,10 +67,10 @@ public class showPatternFrame extends JFrame{
 		add(infoLabel4);*/
 		validate();
 		setVisible(true);
-		infoLabel.setText(task.showPatternName(patternName));
-		/*infoLabel2.setText(task.showPatternCon(patternName));
-		infoLabel3.setText(task.showPatternDesc(patternName));
-		infoLabel4.setText(task.showPatternProb(patternName));*/
+		infoLabel.setText(" Name: " + task.showPatternName(patternName));
+		infoLabel2.setText(" Consequences: " + task.showPatternCon(patternName));
+		infoLabel3.setText(" Description: " + task.showPatternDesc(patternName));
+		infoLabel4.setText(" Problems: " + task.showPatternProb(patternName));
 	}
 	
 }

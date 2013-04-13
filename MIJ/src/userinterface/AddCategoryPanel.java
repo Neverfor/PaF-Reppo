@@ -1,8 +1,6 @@
 package userinterface;
 
 import javax.swing.JPanel;
-import java.awt.FlowLayout;
-import java.awt.Panel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -10,9 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
@@ -31,7 +26,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.InvalidObjectException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 public class AddCategoryPanel extends JPanel {
