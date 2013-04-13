@@ -107,7 +107,6 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 			selectedProblem = cbProblem.getSelectedItem().toString();
 		
 		if(e.getSource().equals(cbCategory)){
-			System.out.println(e.getSource().toString());
 			cbContext.setModel(new DefaultComboBoxModel<String>(
 					task.getContexts(selectedCategory).toArray(new String[0])));
 			cbContext.setSelectedItem(null);
@@ -130,35 +129,7 @@ public class SelectPatternPanel extends JPanel implements ActionListener {
 			showPattern.addActionListener(new ActionListener() {				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					JFrame frame = new JFrame("Pattern Info");
-					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					
-					JLabel infoLabel = new JLabel();
-					frame.getContentPane().add(infoLabel, BorderLayout.WEST);
-					infoLabel.setBounds(100,100,150,50);
-					JLabel infoLabel2 = new JLabel();
-					frame.getContentPane().add(infoLabel2, BorderLayout.WEST);
-					infoLabel2.setBounds(100,120,150,50);
-					JLabel infoLabel3 = new JLabel();
-					frame.getContentPane().add(infoLabel3, BorderLayout.WEST);
-					infoLabel3.setBounds(100,140,150,50);
-					JLabel infoLabel4 = new JLabel();
-					frame.getContentPane().add(infoLabel4, BorderLayout.WEST);
-					infoLabel4.setBounds(100,160,150,50);
-					
-					frame.setSize(400,400);
-					frame.setLocation(400, 250);
-					frame.add(infoLabel);
-					frame.add(infoLabel2);
-					frame.add(infoLabel3);
-					frame.add(infoLabel4);
-					frame.validate();
-					frame.setVisible(true);
-					infoLabel.setText(task.showPattern(patternName));
-					infoLabel2.setText(task.showPatternCon(patternName));
-					infoLabel3.setText(task.showPatternDesc(patternName));
-					infoLabel4.setText(task.showPatternProb(patternName));
-					task.showPattern(patternName);					
+					new showPatternFrame(patternName);				
 				}
 			});
 			contentPanel.add(showPattern);
