@@ -134,6 +134,7 @@ public class MainWindow {
 
 	public void loadPanel(JPanel newPanel){
 		this.frame.getContentPane().remove(this.panel);
+		this.panel = newPanel;
 		this.frame.getContentPane().add(newPanel);
 		this.frame.getContentPane().revalidate();
 	}
