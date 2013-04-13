@@ -12,8 +12,8 @@ import domein.Problem;
 
 public class SelectPatternTask{
 	
-	private ArrayList<Category> categories = new ArrayList<Category>();
-	private ArrayList<Pattern> selectedPatterns = new ArrayList<Pattern>();
+//	private ArrayList<Category> categories = new ArrayList<Category>();
+//	private ArrayList<Pattern> selectedPatterns = new ArrayList<Pattern>();
 	private Repository rp = Repository.getInstance();
 	public static String newline = System.getProperty("line.separator");
 

@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AddCategoryPanel extends JPanel {
+
+	private static final long serialVersionUID = 1L;
 	private JTextField tfCategoryName;
 	private HashMap<JButton, JComboBox<String>> categories;
 	private AddNewPatternTask task;
@@ -106,6 +108,7 @@ public class AddCategoryPanel extends JPanel {
 	}
 
 	class MultiValuePanel extends JPanel {
+		private static final long serialVersionUID = -6008397086603587770L;
 		private HashMap<JButton, JComboBox<String>> mapping;
 		private JPanel contentPanel;
 		private JPanel parentPanel;
