@@ -68,8 +68,6 @@ public class AddNewPatternTask{
 		cate.add(c4);
 		
 		Repository.getInstance().addPattern(p, cate);
-		
-		Repository.getInstance().addPattern(p, cate);
 		p = new Pattern();
 		p.setNaam("State");
 		p.addContext(new Context("State context"));
