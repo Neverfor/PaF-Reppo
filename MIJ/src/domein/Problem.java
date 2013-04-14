@@ -15,4 +15,8 @@ public class Problem {
 	public void setProblem(String Pr) {
 		this.problem = Pr;
 	}
+	
+	public String toString(){
+		return problem;
+	}
 }
