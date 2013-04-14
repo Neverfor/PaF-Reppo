@@ -52,8 +52,8 @@ public class showPatternFrame extends JFrame{
 		JLabel infoLabel4 = new JLabel("");
 		getContentPane().add(infoLabel4, "1, 7, right, center");
 		try {
-			JPanel image = new ShowImage(task.showPatternImage(patternName));
-			getContentPane().add(image, "1, 8, right, center");
+			JPanel imagre = new ShowImage(task.showPatternImage(patternName));
+			getContentPane().add(imagre, "1, 8, right, center");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,8 +62,8 @@ public class showPatternFrame extends JFrame{
 			e.printStackTrace();
 		}
 		
-		setSize(600,600);
-		setLocation(200, 250);
+		setSize(600,800);
+		setLocation(100, 150);
 		validate();
 		setVisible(true);
 		infoLabel.setText(" Name: " + task.showPatternName(patternName));
