@@ -24,7 +24,7 @@ public class showPatternFrame extends JFrame{
 
 	public showPatternFrame(String patternName){
 		super("Pattern Info");
-		setLayout(new FormLayout(new ColumnSpec[] {
+		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 				ColumnSpec.decode("20dlu:grow"),
 				ColumnSpec.decode("20dlu:grow"),
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -53,7 +53,7 @@ public class showPatternFrame extends JFrame{
 		getContentPane().add(infoLabel4, "1, 7, right, center");
 		try {
 			JPanel imagre = new ShowImage(task.showPatternImage(patternName));
-			getContentPane().add(imagre, "2, 9, right, center");
+			getContentPane().add(imagre, "4, 9, left, top");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
