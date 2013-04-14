@@ -24,7 +24,6 @@ import com.jgoodies.forms.layout.RowSpec;
 @SuppressWarnings("serial")
 public class SelectPatternPanel extends JPanel implements ActionListener {
 	private SelectPatternTask task;
-//	private ShowPatternPanel showPan;
 	private JComboBox<String> cbContext;
 	private JComboBox<String> cbProblem;
 	private JComboBox<String> cbCategory;

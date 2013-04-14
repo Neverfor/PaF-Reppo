@@ -82,7 +82,7 @@ public class AddPatternPanel extends JPanel {
 		add(tfDescription, "2, 3, fill, default");
 
 		/* CATEGORIES */
-		//TODO: Allow more categories?
+		//Allow more categories?
 		JLabel lblCategoryName = new JLabel("Category");
 		add(lblCategoryName, "1, 5, left, fill");
 		cbCategories = new JComboBox<String>(task.getCategories().toArray(new String[0]));
@@ -134,17 +134,6 @@ public class AddPatternPanel extends JPanel {
 		for(JTextField tf: this.contexts.values()){
 			tf.setText("");
 		}
-		/*//Werkt niet goed met de export
-		consequencesPanel.removeAll();
-		consequencesPanel = new MultiValuePanel(consequences, this);
-		add(consequencesPanel, "2, 11, fill, default");
-		problemsPanel.removeAll();
-		problemsPanel = new MultiValuePanel(consequences, this);
-		add(problemsPanel, "2, 9, fill, default");
-		contextsPanel.removeAll();
-		contextsPanel = new MultiValuePanel(consequences, this);
-		add(contextsPanel, "2, 7, fill, default");
-		*/
 		this.revalidate();
 	}
 	
@@ -167,7 +156,6 @@ public class AddPatternPanel extends JPanel {
 			JOptionPane.showMessageDialog(null, "Pattern added succesfully", 
 					"Pattern proceccing...",JOptionPane.INFORMATION_MESSAGE);
 		} catch (InvalidObjectException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

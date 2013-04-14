@@ -55,10 +55,8 @@ public class showPatternFrame extends JFrame{
 			JPanel imagre = new ShowImage(task.showPatternImage(patternName));
 			getContentPane().add(imagre, "4, 9, left, top");
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
