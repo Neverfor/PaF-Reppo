@@ -55,6 +55,9 @@ public class ShowPatternTask {
 
 	public String showPatternImage(String patternName) {
 		Pattern p = rp.getPattern(patternName);
-		return p.getDiagram().getLocation();
+		if(p.getDiagram() != null){
+			return p.getDiagram().getLocation();
+		}
+		return "";
 	}
 }
