@@ -48,6 +48,7 @@ public class Diagram extends JPanel {
 	public void setDirectory(String directory) {
 		this.directory = directory;
 	}
+	
 
 //	@Override
 //	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3,
