@@ -1,37 +1,14 @@
 package domein;
 
-import java.awt.*;
-import java.io.File;
-
-import javax.activation.MimetypesFileTypeMap;
-import javax.swing.*;
-
-public class Diagram extends JPanel {
+public class Diagram {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2447333907698791408L;
 	private String naam;
-	private String directory;
-	private Image img;
+	private String location;
 	
-	public Diagram (String naam, String dir) {
-		this.directory = dir;
+	public Diagram (String naam, String location) {
+		this.location = location;
 		this.naam = naam;
-        File f = new File(dir);
-        String mimetype= new MimetypesFileTypeMap().getContentType(f);
-        String type = mimetype.split("/")[0];
-        if(type.equals("image")){
-			this.img = Toolkit.getDefaultToolkit().getImage(dir);
-		}
-
 	}
-	
-	@Override
-	public void paintComponent(Graphics g){
-		 g.drawImage(img,50,10,200,200, this); // locatie 50, 10 en breedte + hoogte 200 x 200
-		}
 
 	public String getNaam() {
 		return naam;
@@ -41,19 +18,11 @@ public class Diagram extends JPanel {
 		this.naam = naam;
 	}
 	
-	public String getDirectory() {
-		return directory;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setDirectory(String directory) {
-		this.directory = directory;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	
-
-//	@Override
-//	public boolean imageUpdate(Image arg0, int arg1, int arg2, int arg3,
-//			int arg4, int arg5) {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
 }

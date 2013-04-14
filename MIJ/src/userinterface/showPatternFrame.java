@@ -1,7 +1,11 @@
 package userinterface;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import com.jgoodies.forms.factories.FormFactory;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -34,6 +38,8 @@ public class showPatternFrame extends JFrame{
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("20dlu:grow"),
 				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -45,23 +51,19 @@ public class showPatternFrame extends JFrame{
 		getContentPane().add(infoLabel3, "1, 5, right, center");
 		JLabel infoLabel4 = new JLabel("");
 		getContentPane().add(infoLabel4, "1, 7, right, center");
-		/*infoLabel.setBounds(100,100,150,50);
-		JLabel infoLabel2 = new JLabel();
-		getContentPane().add(infoLabel2, BorderLayout.WEST);
-		infoLabel2.setBounds(100,120,150,50);
-		JLabel infoLabel3 = new JLabel();
-		getContentPane().add(infoLabel3, BorderLayout.WEST);
-		infoLabel3.setBounds(100,140,150,50);
-		JLabel infoLabel4 = new JLabel();
-		getContentPane().add(infoLabel4, BorderLayout.WEST);
-		infoLabel4.setBounds(100,160,150,50);*/
+		try {
+			JPanel image = new ShowImage(task.showPatternImage(patternName));
+			getContentPane().add(image, "1, 8, right, center");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		setSize(600,600);
 		setLocation(200, 250);
-		//add(infoLabel);
-		/*add(infoLabel2);
-		add(infoLabel3);
-		add(infoLabel4);*/
 		validate();
 		setVisible(true);
 		infoLabel.setText(" Name: " + task.showPatternName(patternName));

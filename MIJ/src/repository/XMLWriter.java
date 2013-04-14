@@ -68,7 +68,7 @@ public class XMLWriter extends Writer {
 				if(d != null){
 					Element image = doc.createElement("image");
 					image.setAttribute("name", d.getNaam());
-					image.setAttribute("location", d.getDirectory());
+					image.setAttribute("location", d.getLocation());
 					pattern.appendChild(image);
 				}
 

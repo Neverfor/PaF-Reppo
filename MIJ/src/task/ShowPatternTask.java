@@ -52,4 +52,9 @@ public class ShowPatternTask {
 		return cons;
 
 	}
+
+	public String showPatternImage(String patternName) {
+		Pattern p = rp.getPattern(patternName);
+		return p.getDiagram().getLocation();
+	}
 }

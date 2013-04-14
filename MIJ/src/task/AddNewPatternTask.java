@@ -44,7 +44,7 @@ public class AddNewPatternTask{
 		p.addContext(new Context("Context for test!"));
 		p.addContext(new Context("Context2 for test!"));
 		p.addProblem(new Problem("Problem test"));
-		Diagram d = new Diagram("Factory Method","c:\\test.xml");
+		Diagram d = new Diagram("Factory Method","diagram1.png");
 		p.setDiagram(d);
 		p.setDescription("Solution");
 		p.addConsequence(new Consequences("Consequence","jwh"));
