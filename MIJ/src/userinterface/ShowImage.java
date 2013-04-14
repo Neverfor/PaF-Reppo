@@ -28,7 +28,6 @@ public class ShowImage extends JPanel {
 	}
 
 	public void paintComponent(Graphics g) {
-		// Teken image
 		this.removeAll();
 		g.drawImage(img, 0, 0, 100, 100, this);
 		setSize(100, 100);

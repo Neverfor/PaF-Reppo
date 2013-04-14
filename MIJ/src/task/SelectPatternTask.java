@@ -12,8 +12,6 @@ import domein.Problem;
 
 public class SelectPatternTask{
 	
-//	private ArrayList<Category> categories = new ArrayList<Category>();
-//	private ArrayList<Pattern> selectedPatterns = new ArrayList<Pattern>();
 	private Repository rp = Repository.getInstance();
 	public static String newline = System.getProperty("line.separator");
 
@@ -24,13 +22,11 @@ public class SelectPatternTask{
 	public Collection<String> getContexts(String selectedCategory){		
 		ArrayList<String> coll = new ArrayList<String>();
 		Collection<Pattern> patterns;
-		//get patterns from selected cat, else get all patterns
 		if(rp.getCategory(selectedCategory) == null){
 			patterns = rp.getPatterns().values();
 		}
 		else{
 			patterns = rp.getCategory(selectedCategory).getPatterns();
-			//add contexts from subcategory
 			if(rp.getCategory(selectedCategory).hasChilderen()){
 				for(Category category: rp.getCategory(selectedCategory).getChilds()){
 					coll.addAll(getContexts(category.getName()));

@@ -102,7 +102,6 @@ public class AddCategoryPanel extends JPanel {
 			JOptionPane.showMessageDialog(null, "Category added succesfully", 
 					"Category proceccing...",JOptionPane.INFORMATION_MESSAGE);
 		} catch (InvalidObjectException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

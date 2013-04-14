@@ -53,7 +53,7 @@ public class showPatternFrame extends JFrame{
 		getContentPane().add(infoLabel4, "1, 7, right, center");
 		try {
 			JPanel imagre = new ShowImage(task.showPatternImage(patternName));
-			getContentPane().add(imagre, "1, 8, right, center");
+			getContentPane().add(imagre, "2, 9, right, center");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
